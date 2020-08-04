@@ -1,0 +1,21 @@
+---
+title: "Initial RMarkdown File"
+author: "Nazli Gul"
+date: "8/4/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Assignment 1
+
+I am an industrial engineer who graduated from Yildiz Technical University in 2019. Currently, I am studying my Master degree in Bogazici University. 
+
+A good analysis and interpretation of data is of great importance for any scientific study. Since I want to draw my career as an academician, data science will be of great importance in my studies. My aim in taking this course is to improve myself on data science and to benefit from it in my future studies.
+
+For more detailed information, you can visit my Linkedin account:
+
+[Linkedin](https://www.linkedin.com/in/nazli-gul-914669b7/)
+
