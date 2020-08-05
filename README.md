@@ -1,2 +1,2 @@
 # boun01-NazliGul
-boun01-NazliGul created by GitHub Classroom
+You can visit my github page via [link] (https://pjournal.github.io/boun01-NazliGul)
