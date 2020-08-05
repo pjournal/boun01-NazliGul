@@ -1,2 +1,3 @@
-# boun01-NazliGul
-boun01-NazliGul created by GitHub Classroom
+# Repository by Nazlı Gül
+You can visit my Progress Journal page in github via 
+[Link](https://pjournal.github.io/boun01-NazliGul/)
