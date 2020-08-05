@@ -22,5 +22,28 @@ I am an industrial engineer who graduated from Yildiz Technical University in 20
 In this video, Steffen Moritz, who is from the Institute of Data Science of TH Cologne, talks about the topic of Visualization of missing data and imputations in time series. Missing data is quite common, especially in sensor data due to the problems regarding data recording, data transmission, and data processing. The imputeTS package helps us to deal with these problems. The features of the package include three basic groups: *imputation, visualizaton*, and *stats-datasets*. The version 3.1 has new visualizations and currently available on github, and soon will be on CRAN. By using **ggplot_na_distribution** function, it is possible to have a good impression of missing values in the data set and the distribution of these values in the time series. Another function, namely **ggplot_na_gapsize** gives a ranking of the occurence of gap sizes. After this overview by using these two useful functions, we may continue by exploring imputation results. Also, **ggpot_na_imputations** function helps us to see how the imputted values fit into the time series. 
 Stefen exemplified the use of 3 important ggplot functions in this video. In addition, many useful functions are included in the package. He also mentioned that the package is very user friendly.
 
-[Youtube Link](https://www.youtube.com/watch?v=KZgvYBedGYo)
+[Youtube Video Link](https://www.youtube.com/watch?v=KZgvYBedGYo)
+
+### An R view into epidemiology
+
+In this post by Joseph Rickert, it is suggested to find some appropriate packages before starting analysis on a new field in R. Since epidemiology is an interesting topic due to Covid19, she tries to show available resources for epidemiologists working in R. A good place to start is to search CRAN directly. The two main packages she uses for searching are **pkgsearch** which searches CRAN package data, and **dlstats** which retrieves package download information. The parameters *score*,and *downloads_last_month* can help filtering the packages to examine. The package **epimdr**, for example, is associated with Bjornstads book *Epidemics: Models and Data in R*,and the vignette for the **epiR** package references the free CDC online course *Principles of Epidemiology in Public Health Practice*. The **DSAIDE** package provides a tutorial on infectious diseases. **epicontacts** provides a collection of tools for representing epidemiological contact data. The **epitrix** package contains a number of utility functions for infectious disease modeling including a function to anonymize data. She concludes her post by saying “When looking for R packages for a particular application, first look to see if there is a task view. If not, R provides some pretty good tools to help you search.”
+
+[R Views Post Link](https://rviews.rstudio.com/2020/05/20/some-r-resources-for-epidemiology/)
+
+### Effect of COVID-19 on our mobility
+
+Ibrahim Awad who moved recently to NYC was curious about how the numbers of the daily coronavirus cases were increasing and how those numbers controlled mobility and decisions in the USA. He collected the mobility data by Google Community Mobility Reports in order to develop his app called *Shiny* to provide some visualization of the mobility data and to interpret the data as well. He grouped the mobility types into six namely grocery and pharmacy, retail, park, transit, workplace, residential, and public transit. He analyzed the answers of several questions such as:
+
+*How has Covid19 changed mobility across the US?*<br>
+*How do mobility types correlate to one another?*<br>
+*How have the reported daily cases affected mobility in each state?*<br>
+*How did people react to daily cases in NYC?*<br>
+
+[R-Bloggers Post Link](https://www.r-bloggers.com/effect-of-covid-19-on-our-mobility/)
+
+### covid19italy v0.3.0 is now on CRAN
+
+The dataset called **covid19italy** provides a daily summary of the coronavirus cases in in Italy by country, region, and province level.  The newest version 0.3.0 of this dataset is now available on CRAN. The *update_data * function enables us to get the most recent data available on the Github version which is updated on a daily basis. The *italy_total* dataset provides a snapshot for the national daily cases distribution in Italy which includes overall cases distribution and active cases distribution. The overal cases distribution is grouped into three: active, recovered, and death. Also, active cases distribution is grouped into three: intensive care, hospitalized with symptoms, and home confinement. It is possible to visualize these distributions over time by using plots for better comprehension and interpretation. 
+
+[R-Bloggers Post Link](https://www.r-bloggers.com/covid19italy-v0-3-0-is-now-on-cran/)
 
