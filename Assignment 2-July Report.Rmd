@@ -1,0 +1,46 @@
+---
+title: 'Assignment 2: Monthly Report EXIST July, 2020'
+author: "Nazli Gul"
+date: "8/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Energy Exchange Istanbul(EXIST)
+### Introduction
+
+Energy Exchange Istanbul (EXIST) was established on March 12, 2015 upon the Electricity Market Law and  Turkish Trade Law. Main objective and principal business activity is to plan, establish, develop, and manage energy market in a transparent manner that fulfills the requirements of energy market. Energy market in Turkey changes hourly and the related data can be found in the official webpage of EXIST. You can [click](https://rapor.epias.com.tr/rapor/xhtml/ptfSmfListeleme.xhtml), and filter the date you wish to check hourly data. This report has been prepared to examine the month of July 2020 using EXIST data for the electricity market.
+
+The basic approach in electricity energy markets is to ensure that electricity production and electricity consumption are equal. There is a balance that should be struck for this. To preserve this balance, energy markets are conducted and these can be summarized in three groups:<br>
+  **1.Day Ahead Market (DAM):** It is the market created according to the next day's hourly electricity plan. Transactions are made on the *Market Clearing Price(MCP)*. 
+  The second column in the data we use while creating the report gives hourly MCP information. <br> 
+  **2.Intraday Market (IDM):** It is the market that continues throughout the day similar to stock exchange. The reason for the creation of this market is that in most     cases, the forecast due to previous day's plan does not fully comply with the actual demand.Transactions are made on the *Weighted Average Price(WAP)*.<br>
+  **3.Balancing Power Market (BPM):** It is the market that is formed due to the electricity energy trade made at the last moment to ensure the balance.Transactions are    made on the *System Marginal Price(SMP)*. The third column in the data we use while creating the report gives hourly SMP information. <br> 
+
+Before we get into the details of the report, there are a few more terms we should be familiar to. These are **energy deficit** and **energy surplus**. In cases where the actual demand is higher than the predicted demand, energy deficit arises, otherwise energy surplus occurs. System Marginal Price(SMP) is always higher than Market Clearing Price(MCP) if system has Energy Deficit, and lower if there is Energy Surplus. Market operator also penalizes the operations in BPM by 3%. This is called **Imbalance Price**. Negative (Deficit) Imbalance Price is calculated as max(MCP,SMP)1.03 ,and Positive Imbalance Price is calculated as min(MCP,SMP)0.97.
+
+### July, 2020 Report
+
+
+After downloading the data between 1 July 2020 and 31 July 2020 from EXIST's official site, the analysis can be started. After making a few edits on this data, the following format is reached.
+
+```{r 1, echo=TRUE}
+library(tidyverse) 
+library(lubridate)
+```
+```{r 2}
+EXIST_data <- read.csv("ptf-smf.csv")
+EXIST_raw_df <- EXIST_data%>%transmute(Date = gsub(pattern = "\\.","-",Date),
+            MCP,
+            SMP,
+            PositiveIP = Positive.Imbalance.Price..TL.MWh.,
+            NegativeIP = Negative.Imbalance.Price..TL.MWh.,
+            SMPDirection = SMP.Direction)
+
+EXIST_raw_df$Date<-as.POSIXct(EXIST_raw_df$Date,format="%d-%m-%y %H:%M")
+head(EXIST_raw_df)
+```
+
