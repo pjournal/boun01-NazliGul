@@ -1,0 +1,837 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Assignment 2: Monthly Report EXIST July, 2020},
+  pdfauthor={Nazli Gul},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Assignment 2: Monthly Report EXIST July, 2020}
+\author{Nazli Gul}
+\date{8/16/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{energy-exchange-istanbulexist}{%
+\section{Energy Exchange
+Istanbul(EXIST)}\label{energy-exchange-istanbulexist}}
+
+\hypertarget{introduction}{%
+\subsection{1. Introduction}\label{introduction}}
+
+Energy Exchange Istanbul (EXIST) was established on March 12, 2015 upon
+the Electricity Market Law and Turkish Trade Law. Main objective and
+principal business activity is to plan, establish, develop, and manage
+energy market in a transparent manner that fulfills the requirements of
+energy market. Energy market in Turkey changes hourly and the related
+data can be found in the official webpage of EXIST. You can
+\href{https://rapor.epias.com.tr/rapor/xhtml/ptfSmfListeleme.xhtml}{click},
+and filter the date you wish to check hourly data. This report has been
+prepared to examine the month of July 2020 using EXIST data for the
+electricity market.
+
+The basic approach in electricity energy markets is to ensure that
+electricity production and electricity consumption are equal. There is a
+balance that should be struck for this. To preserve this balance, energy
+markets are conducted and these can be summarized in three groups:
+\textbf{1.Day Ahead Market (DAM):} It is the market created according to
+the next day's hourly electricity plan. Transactions are made on the
+\emph{Market Clearing Price(MCP)}. The second column in the data we use
+while creating the report gives hourly MCP information.
+\textbf{2.Intraday Market (IDM):} It is the market that continues
+throughout the day similar to stock exchange. The reason for the
+creation of this market is that in most cases, the forecast due to
+previous day's plan does not fully comply with the actual
+demand.Transactions are made on the \emph{Weighted Average Price(WAP)}.
+\textbf{3.Balancing Power Market (BPM):} It is the market that is formed
+due to the electricity energy trade made at the last moment to ensure
+the balance.Transactions are made on the \emph{System Marginal
+Price(SMP)}. The third column in the data we use while creating the
+report gives hourly SMP information.
+
+Before we get into the details of the report, there are a few more terms
+we should be familiar to. These are \textbf{energy deficit} and
+\textbf{energy surplus}. In cases where the actual demand is higher than
+the predicted demand, energy deficit arises, otherwise energy surplus
+occurs. System Marginal Price(SMP) is always higher than Market Clearing
+Price(MCP) if system has Energy Deficit, and lower if there is Energy
+Surplus. Market operator also penalizes the operations in BPM by 3\%.
+This is called \textbf{Imbalance Price}. Negative (Deficit) Imbalance
+Price is calculated as max(MCP,SMP)1.03 ,and Positive Imbalance Price is
+calculated as min(MCP,SMP)0.97.
+
+\hypertarget{july-2020-report}{%
+\subsection{2. July, 2020 Report}\label{july-2020-report}}
+
+After downloading the data between 1 July 2020 and 31 July 2020 from the
+official webpage of EXIST, the analyses can be started. Firstly, a few
+edits on this data are done in order to have a better comprehension. The
+basic packages \emph{tidyverse} and \emph{lubridate} are used throughout
+the report. In addition to these, the \emph{reshape2} package was also
+useful for the plots.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(tidyverse) }
+\KeywordTok{library}\NormalTok{(lubridate)}
+\KeywordTok{library}\NormalTok{(reshape2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{EXIST\_data \textless{}{-}}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"ptf{-}smf.csv"}\NormalTok{)}
+\NormalTok{EXIST\_raw\_df \textless{}{-}}\StringTok{ }\NormalTok{EXIST\_data}\OperatorTok{\%\textgreater{}\%}\KeywordTok{transmute}\NormalTok{(}\DataTypeTok{Date =} \KeywordTok{gsub}\NormalTok{(}\DataTypeTok{pattern =} \StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{."}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,Date),}
+\NormalTok{            MCP,}
+\NormalTok{            SMP,}
+            \DataTypeTok{PositiveIP =}\NormalTok{ Positive.Imbalance.Price..TL.MWh.,}
+            \DataTypeTok{NegativeIP =}\NormalTok{ Negative.Imbalance.Price..TL.MWh.,}
+            \DataTypeTok{SMPDirection =}\NormalTok{ SMP.Direction)}
+
+\NormalTok{EXIST\_raw\_df}\OperatorTok{$}\NormalTok{Date\textless{}{-}}\KeywordTok{as.POSIXct}\NormalTok{(EXIST\_raw\_df}\OperatorTok{$}\NormalTok{Date,}\DataTypeTok{format=}\StringTok{"\%d{-}\%m{-}\%y \%H:\%M"}\NormalTok{)}
+\KeywordTok{head}\NormalTok{(EXIST\_raw\_df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  Date    MCP    SMP PositiveIP NegativeIP   SMPDirection
+## 1 2020-07-01 11:00:00 329.99 329.99     320.09     339.89 Energy Deficit
+## 2 2020-07-01 12:00:00 324.21 342.80     314.48     353.08 Energy Deficit
+## 3 2020-07-01 13:00:00 327.83 355.83     318.00     366.50 Energy Deficit
+## 4 2020-07-01 14:00:00 332.37 377.37     322.40     388.69 Energy Deficit
+## 5 2020-07-01 15:00:00 331.29 376.29     321.35     387.58 Energy Deficit
+## 6 2020-07-01 16:00:00 331.14 375.00     321.21     386.25 Energy Deficit
+\end{verbatim}
+
+We can also use the \texttt{glimpse} function to inspect our data. By
+using it,each column is represented in a row with its data type and
+first few entries. We have 744 rows and 6 variables namely Date, MCP,
+SMP, Positive Imbalance Price, Negative Imbalance Price, and SMP
+Direction.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{EXIST\_raw\_df}\OperatorTok{\%\textgreater{}\%}\KeywordTok{glimpse}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 744
+## Columns: 6
+## $ Date         <dttm> 2020-07-01 11:00:00, 2020-07-01 12:00:00, 2020-07-01 ...
+## $ MCP          <dbl> 329.99, 324.21, 327.83, 332.37, 331.29, 331.14, 330.81...
+## $ SMP          <dbl> 329.99, 342.80, 355.83, 377.37, 376.29, 375.00, 360.81...
+## $ PositiveIP   <dbl> 320.09, 314.48, 318.00, 322.40, 321.35, 321.21, 320.89...
+## $ NegativeIP   <dbl> 339.89, 353.08, 366.50, 388.69, 387.58, 386.25, 371.63...
+## $ SMPDirection <fct> Energy Deficit, Energy Deficit, Energy Deficit, Energy...
+\end{verbatim}
+
+In order to limit the number of displayed rows, the following global
+option can be used.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{options}\NormalTok{(}\DataTypeTok{tibble.print\_max =} \DecValTok{5}\NormalTok{, }\DataTypeTok{tibble.print\_min =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Before making a more detailed analysis, it would be useful to give the
+average prices for the full month of July.The average MCP value is
+\textbf{296} and the average SMP value is \textbf{299} in July, 2020.
+These values can be obtained by using commands below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(EXIST\_raw\_df}\OperatorTok{$}\NormalTok{MCP))}
+\KeywordTok{round}\NormalTok{(}\KeywordTok{mean}\NormalTok{(EXIST\_raw\_df}\OperatorTok{$}\NormalTok{SMP))}
+\end{Highlighting}
+\end{Shaded}
+
+We can check scatter plot in order to see which interval of prices
+occured more frequently during July, 2020. The plot below shows that for
+most of the days, MCP lies between 300-330 and SMP lies between 150-350.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(EXIST\_raw\_df, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{MCP, }\DataTypeTok{y=}\NormalTok{SMP, }\DataTypeTok{color=}\NormalTok{Date)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_point}\NormalTok{() }\OperatorTok{+}\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"MCP"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"SMP"}\NormalTok{,  }\DataTypeTok{title=}\StringTok{"MCP and SMP Prices"}\NormalTok{,}\DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/unnamed-chunk-1-1.pdf}
+
+The bar chart showing the daily change of System Marginal Price and
+Market Clearing Price values is given below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot1\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Day=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{day}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{daily\_average\_MCP =} \KeywordTok{mean}\NormalTok{(MCP), }\DataTypeTok{daily\_average\_SMP =} \KeywordTok{mean}\NormalTok{(SMP)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{      }\KeywordTok{ungroup}\NormalTok{()}\OperatorTok{\%\textgreater{}\%}\KeywordTok{select}\NormalTok{(Day, daily\_average\_MCP, daily\_average\_SMP)}
+\NormalTok{plot2\textless{}{-}}\KeywordTok{melt}\NormalTok{(plot1, }\DataTypeTok{id.vars=}\StringTok{\textquotesingle{}Day\textquotesingle{}}\NormalTok{)}
+\NormalTok{plot2}\OperatorTok{\%\textgreater{}\%}\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Day,}\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{fill=}\NormalTok{variable)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{position=}\StringTok{"dodge"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Day"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"TL/MWh"}\NormalTok{, }
+           \DataTypeTok{title=}\StringTok{"Daily MCP and SMP Change"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/6-1.pdf}
+
+We may be also interested in the daily difference between these prices.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot3\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Day=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{day}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{daily\_average\_MCP =} \KeywordTok{mean}\NormalTok{(MCP), }\DataTypeTok{daily\_average\_SMP =} \KeywordTok{mean}\NormalTok{(SMP),}\DataTypeTok{Difference =} \KeywordTok{abs}\NormalTok{(}\KeywordTok{mean}\NormalTok{(MCP)}\OperatorTok{{-}}\KeywordTok{mean}\NormalTok{(SMP)))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{(plot3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 31 x 4
+##     Day daily_average_MCP daily_average_SMP Difference
+##   <int>             <dbl>             <dbl>      <dbl>
+## 1     1              320.              268.       51.8
+## 2     2              298.              357.       58.6
+## 3     3              317.              373.       56.2
+## 4     4              306.              321.       15.3
+## 5     5              258.              198.       59.8
+## # ... with 26 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot3}\OperatorTok{\%\textgreater{}\%}\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Day)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ Difference, }\DataTypeTok{color =} \StringTok{"Difference of average values"}\NormalTok{)) }\OperatorTok{+}
+\StringTok{     }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x =} \StringTok{"Day"}\NormalTok{, }\DataTypeTok{y =} \StringTok{"TL/MWh"}\NormalTok{,}
+          \DataTypeTok{title =} \StringTok{"Difference between Daily Average MCP and SMP Change"}\NormalTok{,}
+          \DataTypeTok{subtitle =} \StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/7-1.pdf}
+
+\hypertarget{day-ahead-market-dam}{%
+\subsubsection{2.1. Day Ahead Market (DAM)}\label{day-ahead-market-dam}}
+
+\hypertarget{hourly-day-ahead-market}{%
+\paragraph{2.1.1 Hourly Day Ahead
+Market}\label{hourly-day-ahead-market}}
+
+Since the electricity energy market prices are planned on an hourly
+basis, it will be useful to find the hourly average, minimum, and
+maximum values in order to gain some insights about the data. Firstly,
+the plot data is provided, and then the plot is constructed.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot4\textless{}{-}EXIST\_raw\_df}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Hour=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{hour}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{hourly\_average\_MCP=}\KeywordTok{mean}\NormalTok{(MCP), }\DataTypeTok{hourly\_min\_MCP=}\KeywordTok{min}\NormalTok{(MCP), }\DataTypeTok{hourly\_max\_MCP=}\KeywordTok{max}\NormalTok{(MCP))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 24 x 4
+##    Hour hourly_average_MCP hourly_min_MCP hourly_max_MCP
+##   <int>              <dbl>          <dbl>          <dbl>
+## 1     0               297.           230.           324.
+## 2     1               306.           293            327.
+## 3     2               298.           230.           324.
+## 4     3               284.           199.           322.
+## 5     4               285.           219.           320 
+## # ... with 19 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot4 }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Hour) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Hour,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Hour"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"MCP (TL/MWh)"}\NormalTok{, }
+           \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Hourly Market Clearing Price(MCP)"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/8-1.pdf}
+
+\hypertarget{daily-day-ahead-market}{%
+\paragraph{2.1.2 Daily Day Ahead Market}\label{daily-day-ahead-market}}
+
+Day Ahead Market daily prices for the minimum, maximum, and average
+values can be see below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot5\textless{}{-}EXIST\_raw\_df}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Day=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{day}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{daily\_average\_MCP=}\KeywordTok{mean}\NormalTok{(MCP), }\DataTypeTok{daily\_min\_MCP=}\KeywordTok{min}\NormalTok{(MCP), }\DataTypeTok{daily\_max\_MCP=}\KeywordTok{max}\NormalTok{(MCP))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 31 x 4
+##     Day daily_average_MCP daily_min_MCP daily_max_MCP
+##   <int>             <dbl>         <dbl>         <dbl>
+## 1     1              320.          210.          332.
+## 2     2              298.          199.          322.
+## 3     3              317.          293           331.
+## 4     4              306.          238.          314.
+## 5     5              258.          174.          306.
+## # ... with 26 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot5 }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Day) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Day,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Day"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"MCP (TL/MWh)"}\NormalTok{, }
+           \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Daily Market Clearing Price(MCP)"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/9-1.pdf}
+
+\hypertarget{weekly-day-ahead-market}{%
+\paragraph{2.1.3 Weekly Day Ahead
+Market}\label{weekly-day-ahead-market}}
+
+Day Ahead Market weekly prices for the minimum, maximum, and average
+values can be seen below. Week numbers correspond to the sequence in a
+year of 52 weeks.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot6\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Week =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{week}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Weekly\_average\_MCP =} \KeywordTok{mean}\NormalTok{(MCP),}\DataTypeTok{Weekly\_min\_MCP=}\KeywordTok{min}\NormalTok{(MCP),}\DataTypeTok{Weekly\_max\_MCP=}\KeywordTok{max}\NormalTok{(MCP))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 4
+##    Week Weekly_average_MCP Weekly_min_MCP Weekly_max_MCP
+##   <dbl>              <dbl>          <dbl>          <dbl>
+## 1    27               299.           165.           350.
+## 2    28               283.           140.           321.
+## 3    29               300.           195.           335.
+## 4    30               304.           193.           350 
+## 5    31               294.           196.           350.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot6 }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Week) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Week,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Week"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"MCP (TL/MWh)"}\NormalTok{, }
+           \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Weekly Market Clearing Price(MCP)"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/10-1.pdf}
+
+\hypertarget{day-of-the-week-day-ahead-market}{%
+\paragraph{2.1.4 Day of the Week Day Ahead
+Market}\label{day-of-the-week-day-ahead-market}}
+
+Day Ahead Market prices according to the days of the week can be seen
+below. It should be noted that weekday 1 is equal to Sunday.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot7\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Week\_Day=}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{wday}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Weekday\_average\_MCP =} \KeywordTok{mean}\NormalTok{(MCP),}\DataTypeTok{Weekday\_min\_MCP=}\KeywordTok{min}\NormalTok{(MCP),}\DataTypeTok{Weekday\_max\_MCP=}\KeywordTok{max}\NormalTok{(MCP)) }\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 7 x 4
+##   Week_Day Weekday_average_MCP Weekday_min_MCP Weekday_max_MCP
+##      <dbl>               <dbl>           <dbl>           <dbl>
+## 1        1                275.            174.            320.
+## 2        2                302.            140.            350 
+## 3        3                299.            194.            350.
+## 4        4                307.            197.            350.
+## 5        5                297.            197.            327.
+## # ... with 2 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot7}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Week\_Day) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Week\_Day,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{     }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Week Day"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"MCP (TL/MWh)"}\NormalTok{, }
+           \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Week Day Market Clearing Price(MCP)"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/11-1.pdf}
+
+\hypertarget{periodic-day-ahead-market}{%
+\paragraph{2.1.5 Periodic Day Ahead
+Market}\label{periodic-day-ahead-market}}
+
+In the electricity energy market reports, the day is generally divided
+into three periods. The reason for this is to track and compare time
+periods in which energy useage is similar. The names of these periods
+are \textbf{day}, \textbf{night} and \textbf{peak}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot8\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\KeywordTok{transmute}\NormalTok{(MCP,SMP,}\DataTypeTok{Hour =} \KeywordTok{as.numeric}\NormalTok{(lubridate}\OperatorTok{::}\KeywordTok{hour}\NormalTok{(Date)),}\DataTypeTok{Period=}\KeywordTok{ifelse}\NormalTok{(}\DecValTok{8}\OperatorTok{\textless{}=}\NormalTok{Hour }\OperatorTok{\&}\StringTok{ }\NormalTok{Hour}\OperatorTok{\textless{}=}\DecValTok{16}\NormalTok{,}\StringTok{"Day Period"}\NormalTok{,}\KeywordTok{ifelse}\NormalTok{(}\DecValTok{17}\OperatorTok{\textless{}=}\NormalTok{Hour }\OperatorTok{\&}\StringTok{ }\NormalTok{Hour}\OperatorTok{\textless{}=}\DecValTok{22}\NormalTok{,}\StringTok{"Peak Period"}\NormalTok{,}\StringTok{"Night Period"}\NormalTok{)))}\OperatorTok{\%\textgreater{}\%}\StringTok{  }\KeywordTok{group\_by}\NormalTok{(Period)}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Period\_average\_MCP=}\KeywordTok{mean}\NormalTok{(MCP))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   Period       Period_average_MCP
+##   <chr>                     <dbl>
+## 1 Day Period                 303.
+## 2 Night Period               279.
+## 3 Peak Period                313.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot8}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Period,}\DataTypeTok{y=}\NormalTok{Period\_average\_MCP, }\DataTypeTok{fill=}\NormalTok{Period)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Periods"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"MCP (TL/MWh)"}\NormalTok{,}
+         \DataTypeTok{title=}  \StringTok{"Average Market Clearing Price(MCP) of different periods"}\NormalTok{,}
+         \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/12-1.pdf}
+
+\hypertarget{balancing-power-market-bpm}{%
+\subsubsection{2.2. Balancing Power Market
+(BPM)}\label{balancing-power-market-bpm}}
+
+\hypertarget{hourly-balancing-power-market}{%
+\paragraph{2.2.1 Hourly Balancing Power
+Market}\label{hourly-balancing-power-market}}
+
+Balancing Power Market hourly prices for the minimum, maximum, and
+average values can be see below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot9\textless{}{-}EXIST\_raw\_df}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Hour=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{hour}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{hourly\_average\_MSMP=}\KeywordTok{mean}\NormalTok{(SMP), }\DataTypeTok{hourly\_min\_SMP=}\KeywordTok{min}\NormalTok{(SMP), }\DataTypeTok{hourly\_max\_SMP=}\KeywordTok{max}\NormalTok{(SMP))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{(plot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 24 x 4
+##    Hour hourly_average_MSMP hourly_min_SMP hourly_max_SMP
+##   <int>               <dbl>          <dbl>          <dbl>
+## 1     0                294.            179           365 
+## 2     1                308.            180           361.
+## 3     2                297.            180           357.
+## 4     3                283.            176           350 
+## 5     4                280.            170           347.
+## # ... with 19 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot9 }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Hour) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Hour,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Hour"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"SMP (TL/MWh)"}\NormalTok{, }
+           \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Hourly System Marginal Price(SMP)"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/13-1.pdf}
+
+\hypertarget{daily-balancing-power-market}{%
+\paragraph{2.2.2 Daily Balancing Power
+Market}\label{daily-balancing-power-market}}
+
+Balancing Power Market daily prices for the minimum, maximum, and
+average values can be see below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot10\textless{}{-}EXIST\_raw\_df}\OperatorTok{\%\textgreater{}\%}\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Day=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{day}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{daily\_average\_SMP=}\KeywordTok{mean}\NormalTok{(SMP), }\DataTypeTok{daily\_min\_SMP=}\KeywordTok{min}\NormalTok{(SMP), }\DataTypeTok{daily\_max\_SMP=}\KeywordTok{max}\NormalTok{(SMP))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 31 x 4
+##     Day daily_average_SMP daily_min_SMP daily_max_SMP
+##   <int>             <dbl>         <dbl>         <dbl>
+## 1     1              268.          114.          377.
+## 2     2              357.          229.          404.
+## 3     3              373.          335.          460 
+## 4     4              321.          235           365 
+## 5     5              198.          120           266.
+## # ... with 26 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot10}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Day) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Day,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Day"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"SMP (TL/MWh)"}\NormalTok{, }
+           \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Daily System Marginal Price(SMP)"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/14-1.pdf}
+
+\hypertarget{weekly-balancing-power-market}{%
+\paragraph{2.2.3 Weekly Balancing Power
+Market}\label{weekly-balancing-power-market}}
+
+Balancing Power Market weekly prices for the minimum, maximum, and
+average values can be see below.Week numbers correspond to the sequence
+in a year of 52 weeks.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot11\textless{}{-}EXIST\_raw\_df}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Week=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{week}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{weekly\_average\_SMP=}\KeywordTok{mean}\NormalTok{(SMP), }\DataTypeTok{weekly\_min\_SMP=}\KeywordTok{min}\NormalTok{(SMP), }\DataTypeTok{weekly\_max\_SMP=}\KeywordTok{max}\NormalTok{(SMP))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 5 x 4
+##    Week weekly_average_SMP weekly_min_SMP weekly_max_SMP
+##   <dbl>              <dbl>          <dbl>          <dbl>
+## 1    27               303.           114.           460 
+## 2    28               263.           124.           369.
+## 3    29               315.           199.           386.
+## 4    30               330.           201.           435 
+## 5    31               270.            10            365
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot11 }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Week) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Week,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{       }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Week"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"SMP (TL/MWh)"}\NormalTok{, }
+            \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Weekly System Marginal Price(SMP)"}\NormalTok{,}
+            \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/15-1.pdf}
+
+\hypertarget{day-of-the-week-balancing-power-market}{%
+\paragraph{2.2.4 Day of the Week Balancing Power
+Market}\label{day-of-the-week-balancing-power-market}}
+
+Balancing Power Market prices according to the days of the week can be
+seen below. It should be noted that weekday 1 is equal to Sunday.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot12\textless{}{-}EXIST\_raw\_df}\OperatorTok{\%\textgreater{}\%}\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Week\_Day=}\NormalTok{lubridate}\OperatorTok{::}\KeywordTok{wday}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Weekday\_average\_SMP=}\KeywordTok{mean}\NormalTok{(SMP),}\DataTypeTok{Weekday\_min\_SMP=}\KeywordTok{min}\NormalTok{(SMP),}\DataTypeTok{Weekday\_max\_SMP=}\KeywordTok{max}\NormalTok{(SMP))}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 7 x 4
+##   Week_Day Weekday_average_SMP Weekday_min_SMP Weekday_max_SMP
+##      <dbl>               <dbl>           <dbl>           <dbl>
+## 1        1                289.            120             419.
+## 2        2                317.            140.            435 
+## 3        3                314.            179             374.
+## 4        4                276.            114.            386.
+## 5        5                301.            124.            404.
+## # ... with 2 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot12 }\OperatorTok{\%\textgreater{}\%}\KeywordTok{pivot\_longer}\NormalTok{(.,}\OperatorTok{{-}}\NormalTok{Week\_Day) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Week\_Day,}\DataTypeTok{y=}\NormalTok{value,}\DataTypeTok{color=}\NormalTok{name)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_line}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Week Day"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"SMP (TL/MWh)"}\NormalTok{, }
+           \DataTypeTok{title=}  \StringTok{"Average, Minimum and Maximum Week Day System Marginal Price(SMP)"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/16-1.pdf}
+
+\hypertarget{periodic-balancing-power-market}{%
+\paragraph{2.2.5 Periodic Balancing Power
+Market}\label{periodic-balancing-power-market}}
+
+In the electricity energy market reports, the day is generally divided
+into three periods. The reason for this is to track and compare time
+periods in which energy useage is similar. The names of these periods
+are \textbf{day}, \textbf{night} and \textbf{peak}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot13\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\KeywordTok{transmute}\NormalTok{(MCP,SMP,}\DataTypeTok{Hour =} \KeywordTok{as.numeric}\NormalTok{(lubridate}\OperatorTok{::}\KeywordTok{hour}\NormalTok{(Date)),}\DataTypeTok{Period=}\KeywordTok{ifelse}\NormalTok{(}\DecValTok{8}\OperatorTok{\textless{}=}\NormalTok{Hour }\OperatorTok{\&}\StringTok{ }\NormalTok{Hour}\OperatorTok{\textless{}=}\DecValTok{16}\NormalTok{,}\StringTok{"Day Period"}\NormalTok{,}\KeywordTok{ifelse}\NormalTok{(}\DecValTok{17}\OperatorTok{\textless{}=}\NormalTok{Hour }\OperatorTok{\&}\StringTok{ }\NormalTok{Hour}\OperatorTok{\textless{}=}\DecValTok{22}\NormalTok{,}\StringTok{"Peak Period"}\NormalTok{,}\StringTok{"Night Period"}\NormalTok{)))}\OperatorTok{\%\textgreater{}\%}\StringTok{  }\KeywordTok{group\_by}\NormalTok{(Period)}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Period\_average\_SMP=}\KeywordTok{mean}\NormalTok{(SMP))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   Period       Period_average_SMP
+##   <chr>                     <dbl>
+## 1 Day Period                 307.
+## 2 Night Period               276.
+## 3 Peak Period                322.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot13}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Period,}\DataTypeTok{y=}\NormalTok{Period\_average\_SMP, }\DataTypeTok{fill=}\NormalTok{Period)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{       }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{x=}\StringTok{"Periods"}\NormalTok{, }\DataTypeTok{y=}\StringTok{"SMP (TL/MWh)"}\NormalTok{, }
+            \DataTypeTok{title=}  \StringTok{"Average System Marginal Price(SMP) of different periods"}\NormalTok{,}
+            \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/17-1.pdf}
+
+\hypertarget{energy-imbalance}{%
+\subsubsection{2.3. Energy Imbalance}\label{energy-imbalance}}
+
+These are \textbf{energy deficit}, \textbf{energy surplus}, and
+\textbf{energy balance} due to the relationship between actual demand
+and predicted demand. In the data we examine, there are energy deficit,
+surplus and balance states on an hourly basis. This information is given
+in the column called SMP Direction. As we did with the market prices, we
+can also make an analysis for these states in order to consider how many
+deficit, surplus, or balance occured.This may be an important insight
+regarding the prediction reliability.Before making a more detailed
+analysis, it would be useful to give the overall state of the mont July
+of 2020.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot11\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(SMPDirection)}\OperatorTok{\%\textgreater{}\%}\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{count =} \KeywordTok{n}\NormalTok{())}\OperatorTok{\%\textgreater{}\%}\KeywordTok{print}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   SMPDirection   count
+##   <fct>          <int>
+## 1 Energy Deficit   528
+## 2 Energy Surplus   195
+## 3 In Balance        21
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot11}\OperatorTok{\%\textgreater{}\%}\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\StringTok{""}\NormalTok{, }\DataTypeTok{y=}\NormalTok{count, }\DataTypeTok{fill=}\NormalTok{SMPDirection)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{width=}\DecValTok{1}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{coord\_polar}\NormalTok{(}\StringTok{"y"}\NormalTok{, }\DataTypeTok{start=}\DecValTok{0}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{( }\DataTypeTok{title=}  \StringTok{"Energy Imbalance in June 2020"}\NormalTok{,}
+            \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/18-1.pdf}
+
+\hypertarget{hourly-energy-deficit-energy-surplusand-balance-distribution}{%
+\paragraph{2.3.1 Hourly Energy Deficit, Energy Surplus,and Balance
+Distribution}\label{hourly-energy-deficit-energy-surplusand-balance-distribution}}
+
+Hourly energy deficit, energy surplus, and energy balance bar chart can
+be seen below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot14\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Hour =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{hour}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Surplus =} \KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textgreater{}}\NormalTok{SMP), }\DataTypeTok{Deficit=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textless{}}\NormalTok{SMP), }\DataTypeTok{Balance=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{==}\NormalTok{SMP)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(Hour, Surplus, Deficit, Balance) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot15 \textless{}{-}}\StringTok{ }\KeywordTok{melt}\NormalTok{(plot14, }\DataTypeTok{id.vars=}\StringTok{\textquotesingle{}Hour\textquotesingle{}}\NormalTok{)}
+\NormalTok{plot15}\OperatorTok{\%\textgreater{}\%}\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Hour,}\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{fill=}\NormalTok{variable)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{position=}\StringTok{"dodge"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{     }\KeywordTok{labs}\NormalTok{( }\DataTypeTok{title=}  \StringTok{"Hourly Energy Imbalance"}\NormalTok{,}
+          \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/20-1.pdf}
+
+\hypertarget{daily-energy-deficit-energy-surplusand-balance-distribution}{%
+\paragraph{2.3.2 Daily Energy Deficit, Energy Surplus,and Balance
+Distribution}\label{daily-energy-deficit-energy-surplusand-balance-distribution}}
+
+Daily energy deficit, energy surplus, and energy balance bar chart can
+be seen below.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot12\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Day =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{day}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Surplus =} \KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textgreater{}}\NormalTok{SMP), }\DataTypeTok{Deficit=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textless{}}\NormalTok{SMP), }\DataTypeTok{Balance=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{==}\NormalTok{SMP)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{select}\NormalTok{(Day, Surplus, Deficit, Balance) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot13 \textless{}{-}}\StringTok{ }\KeywordTok{melt}\NormalTok{(plot12, }\DataTypeTok{id.vars=}\StringTok{\textquotesingle{}Day\textquotesingle{}}\NormalTok{)}
+\NormalTok{plot13}\OperatorTok{\%\textgreater{}\%}\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Day,}\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{fill=}\NormalTok{variable)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{position=}\StringTok{"dodge"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{( }\DataTypeTok{title=}  \StringTok{"Daily Energy Imbalance"}\NormalTok{,}
+            \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/19-1.pdf}
+
+\hypertarget{weekly-energy-deficit-energy-surplusand-balance-distribution}{%
+\paragraph{2.3.3 Weekly Energy Deficit, Energy Surplus,and Balance
+Distribution}\label{weekly-energy-deficit-energy-surplusand-balance-distribution}}
+
+Weekly energy deficit, energy surplus, and energy balance bar chart can
+be seen below.Week numbers correspond to the sequence in a year of 52
+weeks.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot16\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Week\_number =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{week}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Surplus =} \KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textgreater{}}\NormalTok{SMP), }\DataTypeTok{Deficit=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textless{}}\NormalTok{SMP), }\DataTypeTok{Balance=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{==}\NormalTok{SMP)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%\textgreater{}\%}
+\KeywordTok{select}\NormalTok{(Week\_number, Surplus, Deficit, Balance) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot17 \textless{}{-}}\StringTok{ }\KeywordTok{melt}\NormalTok{(plot16, }\DataTypeTok{id.vars=}\StringTok{\textquotesingle{}Week\_number\textquotesingle{}}\NormalTok{)}
+\NormalTok{plot17}\OperatorTok{\%\textgreater{}\%}\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Week\_number,}\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{fill=}\NormalTok{variable)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{position=}\StringTok{"dodge"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{( }\DataTypeTok{title=}  \StringTok{"Weekly Energy Imbalance"}\NormalTok{,}
+            \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/21-1.pdf}
+
+\hypertarget{day-of-the-week-energy-deficit-energy-surplusand-balance-distribution}{%
+\paragraph{2.3.4 Day of the Week Energy Deficit, Energy Surplus,and
+Balance
+Distribution}\label{day-of-the-week-energy-deficit-energy-surplusand-balance-distribution}}
+
+Energy deficit, energy surplus, and energy balance bar chart according
+to the day of the week can be seen below.It should be noted that weekday
+1 is equal to Sunday.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot18\textless{}{-}EXIST\_raw\_df }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{group\_by}\NormalTok{(}\DataTypeTok{Week\_day =}\NormalTok{ lubridate}\OperatorTok{::}\KeywordTok{wday}\NormalTok{(Date))}\OperatorTok{\%\textgreater{}\%}\StringTok{ }
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{Surplus =} \KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textgreater{}}\NormalTok{SMP), }\DataTypeTok{Deficit=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{\textless{}}\NormalTok{SMP), }\DataTypeTok{Balance=}\KeywordTok{sum}\NormalTok{(MCP}\OperatorTok{==}\NormalTok{SMP)) }\OperatorTok{\%\textgreater{}\%}\StringTok{ }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{\%\textgreater{}\%}
+\StringTok{  }\KeywordTok{select}\NormalTok{(Week\_day, Surplus, Deficit, Balance) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `summarise()` ungrouping output (override with `.groups` argument)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{plot19 \textless{}{-}}\StringTok{ }\KeywordTok{melt}\NormalTok{(plot18, }\DataTypeTok{id.vars=}\StringTok{\textquotesingle{}Week\_day\textquotesingle{}}\NormalTok{)}
+\NormalTok{plot19}\OperatorTok{\%\textgreater{}\%}\KeywordTok{ggplot}\NormalTok{(.,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Week\_day,}\DataTypeTok{y=}\NormalTok{value, }\DataTypeTok{fill=}\NormalTok{variable)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom\_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{position=}\StringTok{"dodge"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme\_test}\NormalTok{()}\OperatorTok{+}
+\StringTok{      }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}  \StringTok{"Day of the Week Energy Imbalance"}\NormalTok{,}
+           \DataTypeTok{subtitle=}\StringTok{" Energy Exchange Turkey(EXIST), between July 01 and July 31"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment-2-July-Report_files/figure-latex/22-1.pdf}
+
+\end{document}
