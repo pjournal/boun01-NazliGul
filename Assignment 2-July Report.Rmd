@@ -65,7 +65,7 @@ round(mean(EXIST_raw_df$MCP))
 round(mean(EXIST_raw_df$SMP))
 ```
 
-We can check scatter plot in order to see which interval of prices occured more frequently during July, 2020. The plot below shows that for most of the days, MCP lies between 300-330 and SMP lies between 150-350.
+We can check scatter plot in order to see which interval of prices occured more frequently during July, 2020. The plot below shows that for most of the days, MCP lies between 300-330 and SMP lies between 150-350. 
 
 ```{r 6, message=FALSE}
 ggplot(EXIST_raw_df, aes(x=MCP, y=SMP, color=Date)) + geom_point() +  labs(x="MCP", y="SMP",  title="MCP and SMP Prices",subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()+geom_abline(slope=1, intercept=0, color="red")
