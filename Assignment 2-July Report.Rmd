@@ -34,7 +34,7 @@ library(tidyverse)
 library(lubridate)
 library(reshape2)
 ```
-```{r 2}
+```{r 2, message=FALSE}
 EXIST_data <- read.csv("ptf-smf.csv")
 EXIST_raw_df <- EXIST_data%>%transmute(Date = gsub(pattern = "\\.","-",Date),
             MCP,
@@ -45,10 +45,11 @@ EXIST_raw_df <- EXIST_data%>%transmute(Date = gsub(pattern = "\\.","-",Date),
 
 EXIST_raw_df$Date<-as.POSIXct(EXIST_raw_df$Date,format="%d-%m-%y %H:%M")
 head(EXIST_raw_df)
+tail(EXIST_raw_df)
 ```
 We can also use the `glimpse` function to inspect our data. By using it,each column is represented in a row with its data type and first few entries. We have 744 rows and 6 variables namely Date, MCP, SMP, Positive Imbalance Price, Negative Imbalance Price, and SMP Direction. 
 
-```{r 3}
+```{r 3, message=FALSE}
 EXIST_raw_df%>%glimpse()
 ```
 In order to limit the number of displayed rows, the following global option can be used.
@@ -66,14 +67,14 @@ round(mean(EXIST_raw_df$SMP))
 
 We can check scatter plot in order to see which interval of prices occured more frequently during July, 2020. The plot below shows that for most of the days, MCP lies between 300-330 and SMP lies between 150-350.
 
-```{r}
-ggplot(EXIST_raw_df, aes(x=MCP, y=SMP, color=Date)) + geom_point() +  labs(x="MCP", y="SMP",  title="MCP and SMP Prices",subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
+```{r 6, message=FALSE}
+ggplot(EXIST_raw_df, aes(x=MCP, y=SMP, color=Date)) + geom_point() +  labs(x="MCP", y="SMP",  title="MCP and SMP Prices",subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()+geom_abline(slope=1, intercept=0, color="red")
 ```
 
 
 The bar chart showing the daily change of System Marginal Price and Market Clearing Price values is given below.
 
-```{r 6, message=FALSE}
+```{r 7, message=FALSE}
 plot1<-EXIST_raw_df %>% group_by(Day=lubridate::day(Date))%>% summarise(daily_average_MCP = mean(MCP), daily_average_SMP = mean(SMP)) %>% 
       ungroup()%>%select(Day, daily_average_MCP, daily_average_SMP)
 plot2<-melt(plot1, id.vars='Day')
@@ -85,7 +86,7 @@ plot2%>%ggplot(.,aes(x=Day,y=value, fill=variable)) + geom_bar(stat="identity", 
 
 We may be also interested in the daily difference between these prices. 
 
-```{r 7, message=FALSE}
+```{r 8, message=FALSE}
 plot3<-EXIST_raw_df %>% group_by(Day=lubridate::day(Date))%>% summarise(daily_average_MCP = mean(MCP), daily_average_SMP = mean(SMP),Difference = abs(mean(MCP)-mean(SMP)))%>%print(plot3)
 plot3%>%ggplot(aes(x=Day)) + geom_line(aes(y = Difference, color = "Difference of average values")) +
      labs(x = "Day", y = "TL/MWh",
@@ -99,7 +100,7 @@ plot3%>%ggplot(aes(x=Day)) + geom_line(aes(y = Difference, color = "Difference o
 
 Since the electricity energy market prices are planned on an hourly basis, it will be useful to find the hourly average, minimum, and maximum values in order to gain some insights about the data. Firstly, the plot data is provided, and then the plot is constructed. 
 
-```{r 8, message=FALSE}
+```{r 9, message=FALSE}
 plot4<-EXIST_raw_df%>% group_by(Hour=lubridate::hour(Date))%>%summarise(hourly_average_MCP=mean(MCP), hourly_min_MCP=min(MCP), hourly_max_MCP=max(MCP))%>%print()
 plot4 %>% pivot_longer(.,-Hour) %>% ggplot(.,aes(x=Hour,y=value,color=name)) + geom_line()+
       labs(x="Hour", y="MCP (TL/MWh)", 
@@ -107,11 +108,11 @@ plot4 %>% pivot_longer(.,-Hour) %>% ggplot(.,aes(x=Hour,y=value,color=name)) + g
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.1.2 Daily Day Ahead Market
+#### 2.1.2. Daily Day Ahead Market
 
 Day Ahead Market daily prices for the minimum, maximum, and average values can be see below.
 
-```{r 9, message=FALSE}
+```{r 10, message=FALSE}
 plot5<-EXIST_raw_df%>% group_by(Day=lubridate::day(Date))%>%summarise(daily_average_MCP=mean(MCP), daily_min_MCP=min(MCP), daily_max_MCP=max(MCP))%>%print()
 plot5 %>% pivot_longer(.,-Day) %>% ggplot(.,aes(x=Day,y=value,color=name)) + geom_line()+
       labs(x="Day", y="MCP (TL/MWh)", 
@@ -119,11 +120,11 @@ plot5 %>% pivot_longer(.,-Day) %>% ggplot(.,aes(x=Day,y=value,color=name)) + geo
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.1.3 Weekly Day Ahead Market
+#### 2.1.3. Weekly Day Ahead Market
 
 Day Ahead Market weekly prices for the minimum, maximum, and average values can be seen below. Week numbers correspond to the sequence in a year of 52 weeks.
 
-```{r 10, message=FALSE}
+```{r 11, message=FALSE}
 plot6<-EXIST_raw_df %>% group_by(Week = lubridate::week(Date))%>% summarise(Weekly_average_MCP = mean(MCP),Weekly_min_MCP=min(MCP),Weekly_max_MCP=max(MCP))%>%print()
 plot6 %>% pivot_longer(.,-Week) %>% ggplot(.,aes(x=Week,y=value,color=name)) + geom_line()+
       labs(x="Week", y="MCP (TL/MWh)", 
@@ -131,11 +132,11 @@ plot6 %>% pivot_longer(.,-Week) %>% ggplot(.,aes(x=Week,y=value,color=name)) + g
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.1.4 Day of the Week Day Ahead Market
+#### 2.1.4. Day of the Week Day Ahead Market
 
 Day Ahead Market prices according to the days of the week can be seen below. It should be noted that weekday 1 is equal to Sunday.
 
-```{r 11, message=FALSE}
+```{r 12, message=FALSE}
 plot7<-EXIST_raw_df %>% group_by(Week_Day= lubridate::wday(Date))%>% summarise(Weekday_average_MCP = mean(MCP),Weekday_min_MCP=min(MCP),Weekday_max_MCP=max(MCP)) %>%print()
 plot7%>% pivot_longer(.,-Week_Day) %>% ggplot(.,aes(x=Week_Day,y=value,color=name)) + geom_line()+
      labs(x="Week Day", y="MCP (TL/MWh)", 
@@ -143,11 +144,11 @@ plot7%>% pivot_longer(.,-Week_Day) %>% ggplot(.,aes(x=Week_Day,y=value,color=nam
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.1.5 Periodic Day Ahead Market
+#### 2.1.5. Periodic Day Ahead Market
 
 In the electricity energy market reports, the day is generally divided into three periods. The reason for this is to track and compare time periods in which energy useage is similar. The names of these periods are **day**, **night** and **peak**.
 
-```{r 12, message=FALSE}
+```{r 13, message=FALSE}
 plot8<-EXIST_raw_df %>% 
 transmute(MCP,SMP,Hour = as.numeric(lubridate::hour(Date)),Period=ifelse(8<=Hour & Hour<=16,"Day Period",ifelse(17<=Hour & Hour<=22,"Peak Period","Night Period")))%>%  group_by(Period)%>% summarise(Period_average_MCP=mean(MCP))%>% print()
 plot8%>% ggplot(.,aes(x=Period,y=Period_average_MCP, fill=Period)) + geom_bar(stat="identity")+theme_test()+
@@ -157,13 +158,24 @@ plot8%>% ggplot(.,aes(x=Period,y=Period_average_MCP, fill=Period)) + geom_bar(st
 
 ```
 
+#### 2.1.6. Percentage Change of Daily Total MCP
+
+The percentage change of total MCP according to previous day data can be seen below.
+
+```{r 14, , message=FALSE}
+Change1<-EXIST_raw_df %>%select(Date, MCP)%>%group_by(Day = lubridate::day(Date))%>%summarise(Daily_total_MCP = sum(MCP)) %>% ungroup()%>%mutate(Daily_total_MCP_previous=lag(Daily_total_MCP,1))%>%transmute(Day,Daily_total_MCP_previous, Daily_total_MCP, Percentage_change=((Daily_total_MCP-Daily_total_MCP_previous)/Daily_total_MCP_previous)*100)
+
+knitr::kable(Change1, format="markdown")
+
+```
+
 ### 2.2. Balancing Power Market (BPM)
 
-#### 2.2.1 Hourly Balancing Power Market
+#### 2.2.1. Hourly Balancing Power Market
 
 Balancing Power Market hourly prices for the minimum, maximum, and average values can be see below.
 
-```{r 13, message=FALSE}
+```{r 15, message=FALSE}
 plot9<-EXIST_raw_df%>% group_by(Hour=lubridate::hour(Date))%>%summarise(hourly_average_MSMP=mean(SMP), hourly_min_SMP=min(SMP), hourly_max_SMP=max(SMP))%>%print(plot)
 plot9 %>% pivot_longer(.,-Hour) %>% ggplot(.,aes(x=Hour,y=value,color=name)) + geom_line()+
       labs(x="Hour", y="SMP (TL/MWh)", 
@@ -171,11 +183,11 @@ plot9 %>% pivot_longer(.,-Hour) %>% ggplot(.,aes(x=Hour,y=value,color=name)) + g
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.2.2 Daily Balancing Power Market
+#### 2.2.2. Daily Balancing Power Market
 
 Balancing Power Market daily prices for the minimum, maximum, and average values can be see below.
 
-```{r 14, message=FALSE}
+```{r 16, message=FALSE}
 plot10<-EXIST_raw_df%>%group_by(Day=lubridate::day(Date))%>%summarise(daily_average_SMP=mean(SMP), daily_min_SMP=min(SMP), daily_max_SMP=max(SMP))%>%print()
 plot10%>% pivot_longer(.,-Day) %>% ggplot(.,aes(x=Day,y=value,color=name)) + geom_line()+
       labs(x="Day", y="SMP (TL/MWh)", 
@@ -183,11 +195,11 @@ plot10%>% pivot_longer(.,-Day) %>% ggplot(.,aes(x=Day,y=value,color=name)) + geo
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.2.3 Weekly Balancing Power Market
+#### 2.2.3. Weekly Balancing Power Market
 
 Balancing Power Market weekly prices for the minimum, maximum, and average values can be see below.Week numbers correspond to the sequence in a year of 52 weeks.
 
-```{r 15, message=FALSE}
+```{r 17, message=FALSE}
 plot11<-EXIST_raw_df%>% group_by(Week=lubridate::week(Date))%>%summarise(weekly_average_SMP=mean(SMP), weekly_min_SMP=min(SMP), weekly_max_SMP=max(SMP))%>%print()
 plot11 %>% pivot_longer(.,-Week) %>% ggplot(.,aes(x=Week,y=value,color=name)) + geom_line()+
        labs(x="Week", y="SMP (TL/MWh)", 
@@ -195,11 +207,11 @@ plot11 %>% pivot_longer(.,-Week) %>% ggplot(.,aes(x=Week,y=value,color=name)) + 
             subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.2.4 Day of the Week Balancing Power Market
+#### 2.2.4. Day of the Week Balancing Power Market
 
 Balancing Power Market prices according to the days of the week can be seen below. It should be noted that weekday 1 is equal to Sunday.
 
-```{r 16, message=FALSE}
+```{r 18, message=FALSE}
 plot12<-EXIST_raw_df%>%group_by(Week_Day=lubridate::wday(Date))%>%summarise(Weekday_average_SMP=mean(SMP),Weekday_min_SMP=min(SMP),Weekday_max_SMP=max(SMP))%>%print()
 plot12 %>%pivot_longer(.,-Week_Day) %>% ggplot(.,aes(x=Week_Day,y=value,color=name)) + geom_line()+
       labs(x="Week Day", y="SMP (TL/MWh)", 
@@ -207,11 +219,11 @@ plot12 %>%pivot_longer(.,-Week_Day) %>% ggplot(.,aes(x=Week_Day,y=value,color=na
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")+theme_test()
 ```
 
-#### 2.2.5 Periodic Balancing Power Market
+#### 2.2.5. Periodic Balancing Power Market
 
 In the electricity energy market reports, the day is generally divided into three periods. The reason for this is to track and compare time periods in which energy useage is similar. The names of these periods are **day**, **night** and **peak**.
 
-```{r 17, message=FALSE}
+```{r 19, message=FALSE}
 plot13<-EXIST_raw_df %>% 
 transmute(MCP,SMP,Hour = as.numeric(lubridate::hour(Date)),Period=ifelse(8<=Hour & Hour<=16,"Day Period",ifelse(17<=Hour & Hour<=22,"Peak Period","Night Period")))%>%  group_by(Period)%>% summarise(Period_average_SMP=mean(SMP))%>% print()
 plot13%>% ggplot(.,aes(x=Period,y=Period_average_SMP, fill=Period)) + geom_bar(stat="identity")+theme_test()+
@@ -221,22 +233,78 @@ plot13%>% ggplot(.,aes(x=Period,y=Period_average_SMP, fill=Period)) + geom_bar(s
 
 ```
 
-### 2.3. Energy Imbalance
+#### 2.2.6. Percentage Change of Daily Total SMP
+
+The percentage change of total SMP according to previous day data can be seen below.
+
+```{r 20, message=FALSE}
+Change2<-EXIST_raw_df %>%select(Date, SMP)%>%group_by(Day = lubridate::day(Date))%>%summarise(Daily_total_SMP = sum(SMP)) %>% ungroup()%>%mutate(Daily_total_SMP_previous=lag(Daily_total_SMP,1))%>%transmute(Day,Daily_total_SMP_previous, Daily_total_SMP, Percentage_change=((Daily_total_SMP-Daily_total_SMP_previous)/Daily_total_SMP_previous)*100)
+
+knitr::kable(Change2, format="markdown")
+
+```
+
+### 2.3. Positive and Negative Imbalance Prices
+
+#### 2.3.1. First Day Positive and Negative Imbalance Price
+
+Negative and Positive imbalance prices(hourly) can be seen below for the first day of the July, 2020.
+
+```{r 21, message=FALSE }
+EXIST_raw_df %>% select(Date, PositiveIP, NegativeIP)%>%group_by(Day = lubridate::day(Date), Hour = lubridate::hour(Date))%>%select(Day,Hour, PositiveIP, NegativeIP)%>%
+filter(Day==1)%>%ggplot(aes(Hour, color = "Hour"))+
+    geom_line(aes(y=PositiveIP, color = "Positive imbalance Price")) +
+    geom_line(aes(y=NegativeIP, color = "Negative imbalance Price")) +
+    labs(x = "Hour", y = "TL/MWh",
+         title= "Positive and Negative Imbalance Price of the First Day of July",
+         subtitle = " Energy Exchange Turkey(EXIST), between July 01 and July 31") +
+    theme_test()
+
+```
+
+
+#### 2.3.2. Last Day Positive and Negative Imbalance Price
+
+Negative and Positive imbalance prices(hourly) can be seen below for the last day of the July, 2020.
+
+```{r 22 , message=FALSE}
+EXIST_raw_df %>% select(Date, PositiveIP, NegativeIP)%>%group_by(Day = lubridate::day(Date), Hour = lubridate::hour(Date))%>%select(Day,Hour, PositiveIP, NegativeIP)%>%
+filter(Day==31)%>%ggplot(aes(Hour, color = "Hour"))+
+    geom_line(aes(y=PositiveIP, color = "Positive imbalance Price")) +
+    geom_line(aes(y=NegativeIP, color = "Negative imbalance Price")) +
+    labs(x = "Hour", y = "TL/MWh",
+         title= "Positive and Negative Imbalance Price of the Last Day of July",
+         subtitle = " Energy Exchange Turkey(EXIST), between July 01 and July 31") +
+    theme_test()
+
+```
+
+#### 2.3.3. Hourly Average Positive and Negative Imbalance Price Difference
+
+```{r 23 , message=FALSE}
+Difference<-EXIST_raw_df%>%select(Date, PositiveIP, NegativeIP)%>%group_by(Hour = lubridate::hour(Date))%>%summarise(Average_PositiveIP=mean(PositiveIP), Average_NegativeIP=mean(NegativeIP))%>%select(Hour, Average_PositiveIP, Average_NegativeIP)%>%ungroup()%>%transmute(Hour,Average_PositiveIP, Average_NegativeIP, Difference=Average_NegativeIP-Average_PositiveIP)
+
+knitr::kable(Difference, format="markdown")
+
+```
+
+
+### 2.4. Energy Imbalance
 
 These are **energy deficit**, **energy surplus**, and **energy balance** due to the relationship between actual demand and predicted demand. In the data we examine, there are energy deficit, surplus and balance states on an hourly basis. This information is given in the column called SMP Direction. As we did  with the market prices, we can also make an analysis for these states in order to consider how many deficit, surplus, or balance occured.This may be an important insight regarding the prediction reliability.Before making a more detailed analysis, it would be useful to give the overall state of the mont July of 2020.
 
-```{r 18, message=FALSE}
+```{r 24, message=FALSE}
 plot11<-EXIST_raw_df %>% group_by(SMPDirection)%>%summarise(count = n())%>%print()
 plot11%>%ggplot(.,aes(x="", y=count, fill=SMPDirection)) + geom_bar(stat="identity", width=1) + coord_polar("y", start=0)+theme_test()+
       labs( title=  "Energy Imbalance in June 2020",
             subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")
 ```
 
-#### 2.3.1 Hourly Energy Deficit, Energy Surplus,and Balance Distribution
+#### 2.4.1. Hourly Energy Deficit, Energy Surplus,and Balance Distribution
 
 Hourly energy deficit, energy surplus, and energy balance bar chart can be seen below.
 
-```{r ,20}
+```{r 25, message=FALSE}
 plot14<-EXIST_raw_df %>% group_by(Hour = lubridate::hour(Date))%>% 
   summarise(Surplus = sum(MCP>SMP), Deficit=sum(MCP<SMP), Balance=sum(MCP==SMP)) %>% ungroup() %>%
   select(Hour, Surplus, Deficit, Balance) 
@@ -246,11 +314,11 @@ plot15%>%ggplot(.,aes(x=Hour,y=value, fill=variable)) + geom_bar(stat="identity"
           subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")
 ```
 
-#### 2.3.2 Daily Energy Deficit, Energy Surplus,and Balance Distribution
+#### 2.4.2. Daily Energy Deficit, Energy Surplus,and Balance Distribution
 
 Daily energy deficit, energy surplus, and energy balance bar chart can be seen below.
 
-```{r ,19}
+```{r 26, message=FALSE}
 plot12<-EXIST_raw_df %>% group_by(Day = lubridate::day(Date))%>% summarise(Surplus = sum(MCP>SMP), Deficit=sum(MCP<SMP), Balance=sum(MCP==SMP)) %>% ungroup() %>%
 select(Day, Surplus, Deficit, Balance) 
 plot13 <- melt(plot12, id.vars='Day')
@@ -259,11 +327,11 @@ plot13%>%ggplot(.,aes(x=Day,y=value, fill=variable)) + geom_bar(stat="identity",
             subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")
 ```
 
-#### 2.3.3 Weekly Energy Deficit, Energy Surplus,and Balance Distribution
+#### 2.4.3. Weekly Energy Deficit, Energy Surplus,and Balance Distribution
 
 Weekly energy deficit, energy surplus, and energy balance bar chart can be seen below.Week numbers correspond to the sequence in a year of 52 weeks.
 
-```{r ,21}
+```{r 27, message=FALSE}
 plot16<-EXIST_raw_df %>% group_by(Week_number = lubridate::week(Date))%>% 
 summarise(Surplus = sum(MCP>SMP), Deficit=sum(MCP<SMP), Balance=sum(MCP==SMP)) %>% ungroup() %>%
 select(Week_number, Surplus, Deficit, Balance) 
@@ -273,11 +341,11 @@ plot17%>%ggplot(.,aes(x=Week_number,y=value, fill=variable)) + geom_bar(stat="id
             subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")
 ```
 
-#### 2.3.4 Day of the Week Energy Deficit, Energy Surplus,and Balance Distribution
+#### 2.4.4. Day of the Week Energy Deficit, Energy Surplus,and Balance Distribution
 
 Energy deficit, energy surplus, and energy balance bar chart according to the day of the week can be seen below.It should be noted that weekday 1 is equal to Sunday.
 
-```{r ,22}
+```{r 28, message=FALSE}
 plot18<-EXIST_raw_df %>% group_by(Week_day = lubridate::wday(Date))%>% 
   summarise(Surplus = sum(MCP>SMP), Deficit=sum(MCP<SMP), Balance=sum(MCP==SMP)) %>% ungroup() %>%
   select(Week_day, Surplus, Deficit, Balance) 
@@ -287,5 +355,5 @@ plot19%>%ggplot(.,aes(x=Week_day,y=value, fill=variable)) + geom_bar(stat="ident
            subtitle=" Energy Exchange Turkey(EXIST), between July 01 and July 31")
 ```
 
-
-
+### 3. References
+[Energy Exchange Turkey Official webpage](https://rapor.epias.com.tr/rapor/xhtml/ptfSmfListeleme.xhtml)
