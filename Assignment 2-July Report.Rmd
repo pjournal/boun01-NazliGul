@@ -12,7 +12,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Energy Exchange Istanbul(EXIST)
+# Energy Exchange Istanbul (EXIST)
 ## 1. Introduction
 
 Energy Exchange Istanbul (EXIST) was established on March 12, 2015 upon the Electricity Market Law and  Turkish Trade Law. Main objective and principal business activity is to plan, establish, develop, and manage energy market in a transparent manner that fulfills the requirements of energy market. Energy market in Turkey changes hourly and the related data can be found in the official webpage of EXIST. You can [click](https://rapor.epias.com.tr/rapor/xhtml/ptfSmfListeleme.xhtml), and filter the date you wish to check hourly data. This report has been prepared to examine the month of July 2020 using EXIST data for the electricity market.
