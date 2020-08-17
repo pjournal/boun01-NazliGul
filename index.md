@@ -7,4 +7,4 @@ Related work and assignments can be seen below for IE48-A Essentials of Data Ana
 
 ### Assignment 2
 
-[Electricity Energy Market Report, June 2020] (Assignment-2-July-Report.html)
+[Electricity Energy Market Report, June 2020] (https://pjournal.github.io/boun01-NazliGul/Assignment-2-July-Report.html)
