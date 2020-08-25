@@ -47,7 +47,7 @@ The basic approach in electricity energy markets is to ensure that electricity p
 
 Before we get into the details of the report, there are a few more terms we should be familiar to. These are **energy deficit** and **energy surplus**. In cases where the actual demand is higher than the predicted demand, energy deficit arises, otherwise energy surplus occurs. System Marginal Price(SMP) is always higher than Market Clearing Price(MCP) if system has Energy Deficit, and lower if there is Energy Surplus. Market operator also penalizes the operations in BPM by 3%. This is called **Imbalance Price**. Negative (Deficit) Imbalance Price is calculated as max(MCP,SMP)1.03 ,and Positive Imbalance Price is calculated as min(MCP,SMP)0.97.
 
-## 2. July, 2020 Report
+## 2. July, 2020 Report 
 
 After downloading the data between 1 July 2020 and 31 July 2020 from the official webpage of EXIST, the analyses can be started. Firstly, a few edits on this data are done in order to have a better comprehension. The basic packages *tidyverse* and *lubridate* are used throughout the report. In addition to these, the *reshape2* package was also useful for the plots. 
 
