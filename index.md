@@ -17,8 +17,11 @@ A report consists of data manipulation and visualization by using dpylr and ggpl
 Exercises during the term can be find below.
 
 ### *Exercise 1:*
+Examples of creating functions in R.
+[Functions in R](https://pjournal.github.io/boun01-NazliGul/Exercise-1.html)
 ### *Exercise 2:*
 ### *Exercise 3:*
+### *Exercise 4:*
 Online tutorial examples for the implementation of join functions in dplyr package. <br>
 [Join Tutorial Examples](https://pjournal.github.io/boun01-NazliGul/Exercise-3.html)
 
