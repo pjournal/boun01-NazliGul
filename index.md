@@ -18,6 +18,6 @@ Exercises during the term can be find below.
 ### Exercise 2:
 ### Exercise 3:
 Online tutorial examples for the implementation of join functions in dplyr package. 
-[R Videos and Posts](https://pjournal.github.io/boun01-NazliGul/Assignment-1-RmarkdownFile_.html)
+[Join Tutorial Examples](https://pjournal.github.io/boun01-NazliGul/Exercise-3.html)
 
 
