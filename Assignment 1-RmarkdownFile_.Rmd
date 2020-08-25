@@ -71,5 +71,5 @@ Ibrahim Awad who moved recently to NYC was curious about how the numbers of the 
 
 The dataset called **covid19italy** provides a daily summary of the coronavirus cases in in Italy by country, region, and province level.  The newest version 0.3.0 of this dataset is now available on CRAN. The *update_data * function enables us to get the most recent data available on the Github version which is updated on a daily basis. The *italy_total* dataset provides a snapshot for the national daily cases distribution in Italy which includes overall cases distribution and active cases distribution. The overal cases distribution is grouped into three: active, recovered, and death. Also, active cases distribution is grouped into three: intensive care, hospitalized with symptoms, and home confinement. It is possible to visualize these distributions over time by using plots for better comprehension and interpretation. 
 
-[R-Bloggers Post Link](https://www.r-bloggers.com/covid19italy-v0-3-0-is-now-on-cran/)
+[R-Bloggers Post Link](https://www.r-bloggers.com/covid19italy-v0-3-0-is-now-on-cran/) 
 
