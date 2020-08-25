@@ -6,8 +6,7 @@ Related work and assignments can be seen below for IE48-A Essentials of Data Ana
 Assignments during the term can be find below.
 
 ### Assignment 1: 
-A report consists of description of myself and some R related videos and posts by using Rmarkdown.
-
+A report consists of description of myself and some R related videos and posts by using Rmarkdown.<br>
 [R Videos and Posts](https://pjournal.github.io/boun01-NazliGul/Assignment-1-RmarkdownFile_.html)
 
 ### Assignment 2: 
