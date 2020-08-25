@@ -213,16 +213,9 @@ guess_number <-function(){
 }
 ```
 
-
-### 9. USD TRY Parity Forecast
-
-Assume today’s USD/TRY is 7.05. We calculate the next 60 days’ parity forecast as follows.First, copy and paste lines below. 
-
 ```{r}
-set.seed(135)
-USDTRY<-round(7.05*exp(cumsum((0.02-0.5*(0.2^2))/252 + 0.2*rnorm(60)*sqrt(1/252))),4)
-
-print(USDTRY[1:10])
+guess_number
 ```
+
 
 
