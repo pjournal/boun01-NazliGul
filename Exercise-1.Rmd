@@ -1,0 +1,228 @@
+---
+title: 'R Exercises: Creating Functions'
+author: "Nazli Gul"
+date: "8/25/2020"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+    theme: united
+    highlight: tango
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<style>
+#TOC {
+ color: 
+ font-family: Calibri;
+ background-color:
+ border-color: darkred;
+}
+#header {
+ color: darkred;
+ font-family: Calibri;
+ background-color:
+}
+body {
+ font-family: Calibri;
+ }
+ 
+</style> 
+
+## Exercises
+
+### 1. Temperature Conversion
+Write a function to convert Fahrenheit to Celsius and Celsius to Fahrenheit.
+
+```{r}
+convert_temperature<-function(X,Y,F_to_C){
+ if (F_to_C==FALSE) {
+   temperature<-(X*9/5)+32
+   }
+ else {
+   temperature<-(Y-32)/(9/5)
+ }
+ return(temperature)
+}
+
+```
+```{r}
+
+convert_temperature(X=30,F_to_C = FALSE)
+convert_temperature(Y=86,F_to_C = TRUE)
+```
+
+### 2. Future Value
+Write a function to calculate the future value of an investment given annually compounding interest over an amount of years.
+
+```{r}
+calculate_future_value<-function(investment,interest, duration_in_years){
+  future_value<-investment*((1+interest)^duration_in_years)
+  return(future_value)
+}
+
+```
+```{r}
+calculate_future_value(investment = 100, interest = 0.07, duration_in_years = 5)
+```
+
+
+### 3. Color Hex Code
+Write a function to randomly generate n [color hex codes](https://www.color-hex.com/). You can use letters predefined vector. Predefined vector `letters` can be used.
+
+```{r}
+color_hex_code <- function(n=1){
+  hex_vec <- c(0:9,letters[1:6])
+  colors <- c()
+  for(i in 1:n){
+    colors <- c(colors,
+      paste0("#",
+      paste0(sample(hex_vec,6,replace=TRUE),collapse="")))
+  }
+  return(colors)
+}
+
+```
+```{r}
+color_hex_code(n=3)
+```
+
+### 4. Probability of Dice
+Write a function which calculates the probability of getting k sixes in n throws of a die. Hint: Use binomial distribution.
+
+```{r}
+get_prob_dice<-function(k,n){
+  prob<-factorial(n)/(factorial(k)*factorial(n-k))*((1/6)^k)*(5/6)^(n-k)
+  return(prob)
+}
+
+```
+```{r}
+get_prob_dice(3,5)
+```
+
+
+### 5. Rock, Scissors, Paper
+Write a rock scissors paper game which computer randomly chooses.
+
+```{r}
+rsp_game <- function(player,choices=c("rock","scissors","paper")){
+  if(!(player %in% choices))
+    return("Choose only rock, scissors or paper as input.") 
+  response <- sample(choices,1)
+  if(player == response)
+    return("I chose the same. Tie!")
+  if((player == "rock" & response == "scissors") | 
+     (player == "scissors" & response == "paper") |
+     (player == "paper" & response == "rock")){
+    return(paste0("I chose ", response, ". You win!"))
+  }else{
+    return(paste0("I chose ", response, ". You lose!"))
+  }
+}
+
+```
+
+```{r}
+rsp_game("rock")
+```
+
+### 6. Fizzbuzz
+In a loop from 1 to 15, if a value can be exactly divided by 3, print “Industrial”; if by 5, print “Engineering”; if by 15, print “Industrial Engineering”. (p.s. You shouldn’t print Industrial or Engineering when the value can be exactly divided by 15). (Tip: You can use modulo operator (`%%`). For example `4%%3` is 1 and `4%%2` is 0.)
+
+```{r}
+for(i in 1:15){
+    print(i)
+    if(i%%15==0){
+        print("Industrial Engineering")
+    }else if(i%%5 == 0){
+        print("Engineering")
+    }else if(i%%3 == 0){
+        print("Industrial")
+    }
+}
+```
+
+Another solution without a loop can be constructed as below.
+
+```{r}
+vec<-rep("",15)
+vec[(1:15)%%3 == 0] <- "Industrial"
+vec[(1:15)%%5 == 0] <- "Engineering"
+vec[(1:15)%%15 == 0] <- "Industrial Engineering"
+names(vec)<-1:15
+print(vec)
+```
+
+### 7. Travelling Salesperson
+
+You can see distances between 10 cities on the data set below. First, copy and paste the following lines to get the distance matrix.
+
+```{r}
+set.seed(2017)
+distance_matrix<-matrix(sample(10:50,100,replace=TRUE),ncol=10)
+distance_matrix[lower.tri(distance_matrix)]<-0
+distance_matrix <- distance_matrix + t(distance_matrix)
+diag(distance_matrix)<-0
+
+distance_matrix
+```
+
+Consider a salesperson operating in these cities. For a given route create a function which will return the total distance that the salesperson need to cover. Use distance matrix as input. 
+
+```{r}
+calculate_total_distance<-function(distance_input,route_info){
+    total_distance<-0
+    for(i in 1:(length(route_info)-1)){
+        total_distance <- total_distance + distance_input[route_info[i],route_info[i+1]]
+    }
+
+    return(paste0("Total distance: ",total_distance))
+}
+```
+Calculate the total distance of the route 1-5-2-6-7-2-4-1.
+```{r}
+calculate_total_distance(distance_input=distance_matrix,route_info=c(1,5,2,6,7,2,4,1))
+```
+
+### 8. Number Guessing Game
+
+Have the function to choose a number between 1 and 100 and create a game where the user is asked to guess that number in at most 10 trials. At each trial report whether the guessed number is higher or lower than the actual number. It is either a win or a game over after 10 trials.
+
+```{r}
+guess_number <-function(){
+    my_number<-sample(1:100,1)
+    print("I have a number on my mind. It is between 1 and 100. Can you guess it in 10 trials?")
+    for(i in 10:1){
+        player_guess<-readline("Enter a number between 1 and 100: ")
+        if(player_guess == my_number){
+            return("Congratulations! Correct answer.")
+        }else if(player_guess > my_number){
+            print("My number is lower than your guess. Try again...")
+        }else{
+            print("My number is higher than your guess. Try again...")
+        }
+        print(paste0("Remaining guesses: ", i-1))
+    }
+    return("Game over :/")
+}
+```
+
+
+### 9. USD TRY Parity Forecast
+
+Assume today’s USD/TRY is 7.05. We calculate the next 60 days’ parity forecast as follows.First, copy and paste lines below.
+
+```{r}
+set.seed(135)
+USDTRY<-round(7.05*exp(cumsum((0.02-0.5*(0.2^2))/252 + 0.2*rnorm(60)*sqrt(1/252))),4)
+
+print(USDTRY[1:10])
+```
+
+
