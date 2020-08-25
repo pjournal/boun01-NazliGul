@@ -1,4 +1,4 @@
-## Welcome to Nazli Gul's Progress Journal
+# Welcome to Nazli Gul's Progress Journal
 Related work and assignments can be seen below for **IE48-A Essentials of Data Analysis** course.
 
 
