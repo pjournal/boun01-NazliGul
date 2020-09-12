@@ -1,0 +1,152 @@
+---
+title: "Assignment 3: Diamonds Data"
+author: "Nazlı Gül"
+date: "9/6/2020"
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+    theme: united
+    highlight: tango
+  pdf_document:
+    toc: yes
+    toc_depth: '3'
+  word_document:
+    toc: yes
+    toc_depth: '3'
+---
+
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<style>
+#TOC {
+ color: 
+ font-family: Calibri;
+ background-color:
+ border-color: darkred;
+}
+#header {
+ color: darkred;
+ font-family: Calibri;
+ background-color:
+}
+body {
+ font-family: Calibri;
+ }
+ 
+</style> 
+
+# Exploratory Data Analysis and Price Estimation
+
+## 1. Introduction
+### 1.1 Diamonds
+
+Diamonds are the result of carbon exposed to extremely high heat and pressure, deep in the earth. This process results in a variety of both internal and external characteristics(i.e. size, shape, color, etc.) which makes every diamond unique. Therefore, jewelry industry uses a systematic way to evaluate and discus these factors. Diamond professionals use the grading system developed by GIA in the 1950s, which established the use of four important factors to describe and classify diamonds: **Clarity**, **Color**, **Cut**, and **Carat Weight**.These are known as the *4C*s. When used together, they describe the quality of a finished diamond. The value of a finished diamond is based on this combination. <br>
+The diamonds dataset that we use in this report consists of prices and quality information from about 54,000 diamonds, and is included in the ggplot2 package. The dataset contains information on prices of diamonds, as well as various attributes of diamonds, some of which are known to influence their price (in 2008). These attributes consist of the 4C and some physical measurements such as depth, table, x, y, and z.
+
+```{r, echo=FALSE}
+url <- "https://robbreport.com/wp-content/uploads/2018/04/sothebys-diamonds-102-34-carat-d-colour-flawless-type-iia-diamond-1.jpg?w=1000"
+
+```
+
+<center>
+
+![](`r url`){#id .class width=500 height=300px}
+
+</center>
+
+### 1.2 Objectives
+
+In this assignment, firstly, the data will be investigated for preprocessing to improve its quality. Then an exploratory data analysis will be performed by data manipulation and data visualization steps. The main purpose is to identify which variables affect the price of diamonds mostly and come up with a conclusion for the relationship between variables. In addition to these, forecasting models will be studied in order to estimate the price of diamonds with given properties. The processes during the assignment can be listed as below:
+
+1. Data Preprocessing
+2. Data Manipulation
+3. Data Visualization
+4. Forecasting
+
+## 2. Data Preprocessing
+
+### 2.1 Used Packages
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(knitr)
+library(tinytex)
+library(kableExtra)
+library(GGally)
+
+```
+The packages used during the assignment can be listed as below:
+
+1. tidyverse
+2. knitr
+3. tinytex
+4. kableExtra
+5. GGally
+
+### 2.2 Variables
+
+Before starting the analysis with the dataset, it will be useful to have information about the properties of diamonds. `glimpse()` function shows that there are 10 columns regarding the properties of diamonds. -
+
+```{r}
+
+diamonds %>% glimpse()
+
+```
+
+1. `carat`: Weight of the diamond (0.2–5.01)
+2. `cut`: Quality of the cut, from *Fair, Good, Very Good, Premium, Ideal*
+3. `color`: Color of the diamond, from *D (best)* to *J (worst)*
+4. `clarity`: A measurement of how clear the diamond is, from *I1 (worst), SI2, SI1, VS2, VS1, VVS2, VVS1, IF (best)*
+5. `depth`: A measurement of the diamond called *total depth percentage*  equals to  z / mean(x, y) = 2 * z / (x + y)
+6. `table`: width of top of diamond relative to widest point (43–95)
+7. `price`: Price of the diamond in US dollars ranging between $326 to $18,823
+8. `x`: Length of the diamond in mm (0–10.74)
+9. `y`: Width of the diamond in mm (0–58.9)
+10. `z`: Depth of the diamond in mm (0–31.8)
+
+
+
+### 2.3 Dublicate and Missing Data
+
+```{r}
+sum(any(is.na(diamonds)))
+```
+
+```{r}
+diamonds%>% filter(price<0)
+```
+
+```{r}
+diamonds%>% filter(price<0 | carat<0 | table<0 | x<0 | y<0 | z<0)
+```
+
+```{r}
+sum(duplicated(diamonds))
+```
+
+
+
+### 2.4 Summary of Data
+```{r}
+summary(diamonds)
+ggpairs(diamonds, title="Pairwise Correlation between Variables")
+```
+From the pairwise correlation plot, we could observe that:
+1- There is a relationship (trendable and diverging) in between log Price and carat.
+2- Price exhibits very limited or no relationship with table and depths.
+3- carat is highly correlated to x,y,z. Further understanding from the dictionary, we then understand that the weight (carat) of a diamond would definitely be affected by its length, width and width (x,y,z respectively). 
+
+
+
+## 3. Exploratory Data Analysis
+## 4. Price Estimation
+## References
+
+[Diamonds Info](https://www.gia.edu/diamond-quality-factor#:~:text=Diamond%20professionals%20use%20the%20grading,shapes%20and%20still%20be%20beautiful.)
+[link](https://rstudio-pubs-static.s3.amazonaws.com/368675_f42b788b1bae40b0be7fb93ed92c67c4.html)
