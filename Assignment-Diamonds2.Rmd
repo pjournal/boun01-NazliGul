@@ -16,6 +16,21 @@ output:
 
 ```{r setup, include=FALSE, message=FALSE, warning=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE, fig.align = "center")
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(knitr)
+library(tinytex)
+library(kableExtra)
+library(corrplot)
+library(RColorBrewer)
+library(ggExtra)
+library(rpart)
+library(rpart.plot)
+library(rattle)
+library(data.table)
+library(caret)
+library(e1071)
+```
 ```
 
 <style>

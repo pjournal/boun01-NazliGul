@@ -1,0 +1,258 @@
+---
+title: "BOUN IE 48A - Summer 2019-2020 Final"
+author: "Nazlı Gül"
+date: "9/12/2020"
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: no
+    theme: united
+    highlight: tango
+---
+
+```{r setup, include=FALSE, results="hide"}
+knitr::opts_chunk$set(echo = TRUE,fig.align = "center", message = FALSE, warning = FALSE, error = FALSE)
+library(tidyverse)
+library(knitr)
+library(tinytex)
+library(ggthemes)
+library(RColorBrewer)
+library(ggExtra)
+library(patchwork)
+library(wesanderson)
+library(gridExtra)
+library(kableExtra)
+library(cowplot)
+
+```
+
+<style>
+#header {
+ color: darkred;
+ font-family: Calibri;
+ background-color:
+}
+body {
+ font-family: Calibri;
+ }
+ 
+</style> 
+
+## Part I: Short and Simple
+
+### Question 1:
+
+Since COVID is a vital issue that deeply affects our daily life, there are many studies from different countries. Each country collect data and calculate some indicators on their  own way. Although the same parameters are used, the testing approach of countries vary, such as in some countries only people with symptoms are investigated, whereas in others large scale testing is pursued. Also, COVID-induced deaths are not easy to diagnose, because another health problem may be triggered by COVID, therefore, it is almost impossible to calculate the effects realistically. The social, health, economic and demographic characteristics of the countries vary. Countries with inadequate access to medicine, treatment, and doctors will be more vulnerable to disease. Likewise, it would not be correct to compare the countries with different age group distributions.In addition to all these, not all governments share their information equally transparently. In line with political interests, it is not possible to reach real country data. In order to improve the weaknesses in comparison methods, country-based coefficients can be added for each direct and indirect affecting factors. In addition, the calculated parameters must be standardized worldwide, and process dynamics must be taken into account with their probably nonlinear relationships between since human brain cannot anticipate many simultaneously differing variables.
+
+### Question 2:
+
+Before I start my analysis, I check the quality of data. For this, I examine the NA and duplicate values, and the accuracy of variables. Later, my exploratory data analysis consists of identifying the objective, planning the steps, manipulating and visualizing data. At the beginning, I try to create more general tables by manipulation where I can observe the relationships between variables. Later, I select the most appropriate plot for the summarized data to improve comprehension. In this example, the task is *the distribution of funds from donations*, and the objective is *maximizing the positive impact on society*. Since the range of the projects is very wide and different, they should be divided into subgroups. For example, there are many health-related issues that need improvement for welfare that cannot be reduced to a single group. All those have different priority, importance, or value in the terms of social impact. After creating all these subgroups, the maximum impact criterion should be determined according to the analyst because it is a quite subjective parameter. For example, while the government may measure this by using economic parameters, sociologists may measure it with people's satisfaction. Once the parameter has been set, expert opinions, welfare impact rates appraised by citizens, etc. can be examined in determining these weights. Since there will be many subgroups, various dimension reduction and clustering methods can be used. At the end, funds can be distributed according to these weights which reflect the value for social impact. Funding the only group with the highest coefficient should not be preferred unless there is an emergency situation because like positive impact, the negative impact of not funding a donation should be also considered. The would choose the *Pain Points in Our Society and Optimal Budget Allocation* title since the allocation would also reflect the most important social problem but with less emphasis than the other title.  
+
+\newpage
+### Question 3:
+
+Star Wars is an American epic space film series created by George Lucas, which began with the eponymous 1977 film and quickly gain a worldwide fame.The *original trilogy* was released between 1977 and 1983, the *prequel trilogy* between 1999 and 2005, and a *sequel trilogy* between 2015 and 2019 according to this [link](https://en.wikipedia.org/wiki/List_of_Star_Wars_films). 
+
+1. A New Hope(1977): Original Triology
+2. The Emrpires Strikes Back(1980): Original Triology
+3. Return of Jedi(1983): Original Triology
+4. Attack of Clones:(2002): Prequel Triology
+5. Revenge of the Sith:(2005): Prequel Triology
+6. The Phantom Menace:(1999): Prequel Triology
+7. The Force Awakends(2015): Sequel Triology
+
+Therefore, I put the triology names in the end of the film names in order to have the possibility to compare different triologies as well. Since there are different species in different films, one of the grouping criteria was identified as species. By examining below plot, different films can be compared by the existence of species including their gender. Also, I wanted to add an indicator of body height and mass relationship, namely Body Mass Index(BMI), in order to compare the genders.
+
+To make it more visual for the species:
+
+![Zabrak](https://vignette.wikia.nocookie.net/starwars/images/e/ee/ZabrakNEGAS.jpg/revision/latest/scale-to-width-down/500?cb=20070416170907){#id .class width=120 height=200px} ![Mirialan](https://vignette.wikia.nocookie.net/starwars/images/b/b7/Mirialan_Diplomat.png/revision/latest/scale-to-width-down/499?cb=20160207064156){#id .class width=120 height=200px} ![Droid](https://vignette.wikia.nocookie.net/starwars/images/f/fb/Droid_Trio_TLJ_alt.png/revision/latest/scale-to-width-down/250?cb=20200223214952){#id .class width=120 height=200px} ![Gungan](https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSjVIswNELwE1_Hrz_20YHwUs8xw0MC2t7_twqPD_LKT09rERDFpuyNOOSQz6nIxBY6tFa6zMctX9LzKoeNugDJ6nZfUVFGOsUjtQ&usqp=CAU&ec=45699845){#id .class width=120 height=200px} ![Wookiee](https://vignette.wikia.nocookie.net/starwars/images/1/1e/Chewbacca-Fathead.png/revision/latest/scale-to-width-down/500?cb=20161108052810){#id .class width=120 height=200px}![Human](https://vignette.wikia.nocookie.net/starwars/images/d/d6/Human_NEGAS.jpg/revision/latest/scale-to-width-down/150?cb=20090709062312){#id .class width=120 height=200px}
+
+The figures of the species above belong to Zabrak, Mirialan, Droid, Gungan, Wookiee, and Human, respectively.
+
+```{r, fig.height=6.75}
+starwars2<-starwars %>% 
+unnest(films)%>%
+mutate(bmi = mass / ((height / 100)  ^ 2)) %>%group_by(species, films, gender) %>% 
+summarise( n = n(),average_bmi = mean(bmi, na.rm = TRUE))%>% filter(n > 1&gender!="NA")%>% 
+mutate(films = as.character(films),
+films = case_when(films == "A New Hope" ~ "A New Hope-Original Triology(1977)",
+films == "Attack of the Clones" ~ "Attack of the Clones-Prequel Triology(2002)",
+films == "Return of the Jedi" ~ "Return of the Jedi-Original Triology(1983)",
+films == "Revenge of the Sith" ~ "Revenge of the Sith-Prequel Triology(2005)",
+films == "The Empire Strikes Back" ~ "The Empire Strikes Back-Original Triology(1980)",
+films == "The Force Awakens" ~ "The Force Awakens-Sequel Triology(2015)",
+films == "The Phantom Menace" ~ "The Phantom Menace-Prequel Triology(1999)",
+TRUE ~ films),films = as.factor(films)) 
+starwars2%>% ggplot(., aes(y = species, x = ifelse(gender=="masculine", 
+yes=-average_bmi,no=average_bmi),fill=gender)) + geom_col() +
+scale_x_continuous(labels = abs, limits = max(starwars2$average_bmi) * c(-1,1)) +
+geom_text(aes(label = format(average_bmi, digits = 0)), size=2.5,
+position = position_stack(vjust = 0.5))+facet_wrap(~films, ncol=1)+
+theme_minimal()+scale_fill_manual(values=wes_palette(n=3, name="Royal1"))+ 
+theme(axis.text.y = element_text(size=8))+labs( y="Species ", x="Body Mass Index(BMI)",
+fill="Gender")
+```
+
+Results:
+
+- The number of species is the most in The Phantom Menance.
+- There is no feminine specie in The Empire Strikes Back.
+- Droid and Human species exist in all the films.
+- Droid, Gungan, Wookiee, and Zabrak species are only masculine.
+- Mirialan specie is only feminine.
+- Human specie is the only one with both genders.
+- Original triology and Sequel Triology have only two species: Human and Droid.
+- whereas, the specie diversity is higher in Prequel Triology.
+- Almost alll feminine species are healthy, whereas all Droids are obese.
+
+
+\newpage
+
+## Part II: Extending Group Project Car Market
+
+```{r, fig.height=10 }
+carmarket = readRDS(gzcon(url
+("https://github.com/pjournal/boun01g-data-mine-r-s/blob/gh-pages/Project/turkey_car_market_EDA?raw=true")))
+carmarket_brand<-carmarket%>% group_by(Brand)%>%
+summarise(Average_Price = mean(Price)) %>%
+arrange(desc(Average_Price))
+quant = quantile(carmarket_brand$Average_Price, seq(0, 1, 0.2))
+carmarket_segment<- carmarket_brand%>%
+mutate(Price_Group = case_when(Average_Price < quant[2] ~ "Very Cheap",
+Average_Price < quant[3] ~ "Cheap",Average_Price < quant[4] ~ "Moderate",
+Average_Price < quant[5] ~ "Expensive",TRUE ~ "Luxury")) %>%
+mutate(Price_Group = factor(Price_Group,levels = c("Very Cheap", "Cheap",
+"Moderate", "Expensive", "Luxury"), ordered=TRUE))
+carmarket_segment<-carmarket_segment[,-2]
+carmarket_segment<-carmarket%>%left_join(., carmarket_segment, by = "Brand")
+a<-carmarket_segment%>%group_by(Price_Group)%>%ggplot(.,aes(x=Price))+
+  geom_vline(aes(xintercept=mean(Price)),color="black",linetype="dashed",size=1)+
+  geom_histogram(bins=50)+ theme_minimal()+ theme(axis.text.x = element_text(angle = 90),
+  legend.position = "none") +scale_x_continuous(labels = 
+  function(x) format(x, scientific = FALSE))+
+  labs(subtitle = "Price Distribution",fill= "Price Segments",x = "Price",
+  y="Frequency")+scale_x_continuous(labels = function(x) format(x, scientific = FALSE)) +
+  xlim(0, 1000000)+facet_wrap(~Price_Group, ncol=5)+ aes(fill = as.factor(Price_Group))+
+  scale_fill_brewer(palette = "Set2")
+b<-carmarket_segment %>%group_by(Price_Group, Body_Type) %>%
+  summarize(Price_Group_type_count = n())%>%mutate(Price_Group_type_percentage = 
+  Price_Group_type_count / sum(Price_Group_type_count)) %>%
+  ggplot(., aes(x = Body_Type, y = Price_Group_type_count, fill = Price_Group)) +
+  geom_bar(position = "fill",stat = "identity") + theme_minimal() +
+  scale_y_continuous(labels = scales::percent_format()) + theme(axis.text.x = 
+  element_text(angle = 90), legend.position = "right") + 
+  scale_fill_brewer(palette = "Set2")+labs(subtitle = "Body Types Analysis",
+  x ="Body Type",y ="Percentage of Price Segment", fill = "Price Segment")
+c<-carmarket_segment %>%group_by(Price_Group, Gear) %>%
+  summarize(Price_Group_type_count = n()) %>%mutate(Price_Group_type_percentage = 
+  Price_Group_type_count / sum(Price_Group_type_count)) %>%
+  ggplot(., aes(x = Gear, y = Price_Group_type_count, fill = Price_Group)) +
+  geom_bar(position = "fill",stat = "identity") + theme_minimal() +
+  scale_y_continuous(labels = scales::percent_format()) +theme(axis.text.x = 
+  element_text(angle = 90), legend.position = "none") +scale_fill_brewer(palette = "Set2")+
+  labs(subtitle = "Gear Types Analysis",x = "Gear Type",y = "Percentage of Price Segment", 
+       fill = "Price Segment")
+d<-carmarket_segment %>%group_by(Price_Group, Fuel_Type) %>%
+  summarize(counter = n()) %>%mutate(percentage = 100 * counter / sum(counter)) %>%
+  ggplot(., aes(x = '', y = counter, fill = Price_Group)) + geom_bar(width = 1, 
+  stat = "identity", position = "fill") +coord_polar("y") +
+  theme_void() + scale_fill_brewer(palette = "Set2")+theme(plot.title = 
+  element_text(vjust = 0.5), legend.position = "none") +
+  facet_wrap(~Fuel_Type, ncol=4)+labs(subtitle = "Fuel Types Analysis")
+(a/b/(c+d))+
+  plot_annotation(title = "Price Segment Analysis",theme = 
+  theme(plot.title = element_text(size = 15, face = "bold")))
+```
+The dataset used in our group project belongs to a website in Turkey which makes online buying and selling of cars advertised in 2020. It is called Turkey Car Market 2020 and downloaded from Kaggle. Although there are many plots of exploratory data analysis, we could not focus much on the brand of the cars. This is because there were 36 brands, and it would be confusing. However, if we thinl about car brands in daily life, we can say that they generally appeal to a certain segment with their products, in most cases because of their prices. For example, brands such as Porsche and Mercedes bring luxury cars to mind, while Ford can be more preferred by people with a moderate budget.I wanted to go deeper with this segmentation in order to see the different features of different segments. 
+
+Results: 
+
+- The most of the car ads belong to cheap price segment.
+- Off-road vehicle, Open Top, Roadster, and Sports car have the highest precentage of luxury price segment cars. Especially, Roadster has no buyers fromvery cheap, cheap, and moderate segments.
+- Minivan is preffered mostly moderate price segment buyers.
+- There are almost no luxury cars in manual gear type. Logically, the percentage of very cheap, and cheap segment is the highest in this gear type.
+- Hybrid cars are mostly in expensive, and luxury segments.
+- The percentage distirbution of different segments in Diesel, and Electricity is similar to each other.
+- Gasoline is mostly preferred by moderate price segment buyers.
+
+\newpage
+## Part III: Welcome to Real Life 
+```{r}
+final_part3 <- readRDS(gzcon(url(
+"https://github.com/pjournal/boun01g-data-mine-r-s/blob/gh-pages/Final%20TakeHome/all_data?raw=true")))
+final_part3<-final_part3%>%filter(!(year=="2014"))
+st<-"Automotive distributors' association"
+```
+The dataset includes monthly retail sales of automobiles and commercial vehicles in Turkey based on brand in monthly basis from Jan'15 to Aug'20. There are 12 columns, and 3,027 rows. 
+The main analyses might be the *domestic-import* and *automobile-commercial* comparisons.In addition to these analyses, a plot for the brand approach is illustrated.
+
+```{r fig.show="hold", out.width="75%"}
+a<-final_part3 %>% group_by(month) %>% summarise(Monthly_imp_avg = mean(total_imp)) %>% 
+  ggplot(.,aes(x=as.factor(month), y = Monthly_imp_avg, fill= Monthly_imp_avg))+ 
+  geom_col(color="black") + geom_text(aes(label = format(Monthly_imp_avg, digits = 3)), 
+  position = position_stack(vjust = 0.5), angle=60)+ geom_line(aes(y = Monthly_imp_avg), 
+  color="black", group=1, size=0.8)+ theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 65), legend.position ="none")+         
+  scale_fill_gradient(low = "yellow", high = "red")+ylim(0,1700)+ 
+  labs(title="Monthly Average Import and Domestic",y="Import Monthly Average ",
+  subtitle=st, x="Months",fill="Average Import")
+b<-final_part3 %>% group_by(month) %>% summarise(Monthly_dom_avg = mean(total_dom)) %>% 
+  ggplot(.,aes(x=as.factor(month), y = Monthly_dom_avg, fill= Monthly_dom_avg))+
+  geom_col(color="black") + geom_text(aes(label = format(Monthly_dom_avg, digits = 3)), 
+  position = position_stack(0.5), angle=60)+geom_line(aes(y = Monthly_dom_avg), 
+  color="black", group=1, size=0.8)+theme_minimal() + theme(axis.text.x = 
+  element_text(angle = 65), legend.position = "none")+scale_fill_gradient(
+  low = "yellow", high = "red")+ylim(0,1700)+ labs( y="Domestic Monthly Average ", 
+  x="Months",fill="Average Domestic")
+(a | b)
+```
+Bar charts above show that, total import is higher than total domestic average throughout the year. It can be said that the market is more active at the end of the year, and more calm at the beginning of the year for both import and domestic.This may be the result of taxes, and regulations. 
+
+```{r ,fig.show="hold", out.width="75%" }
+f<-final_part3%>%group_by(month)%>% summarise(Monthly_imp_auto_avg = mean(auto_imp), 
+  Monthly_dom_auto_avg = mean(auto_dom),Monthly_imp_com_avg = mean(comm_imp), 
+  Monthly_dom_com_avg = mean(comm_dom) ) %>% pivot_longer(.,-month) %>% 
+  ggplot(.,aes(x=month,y=value,color=name))+scale_x_continuous(breaks = seq(0,12, by = 1))+
+  geom_line(size=1)+ theme_minimal()+theme(axis.text.x = element_text(angle = 65), 
+  legend.position = c(0.5, 0.85))+ylim(0,2100)+ labs(title="Monthly Average Import and Domestic",
+  y="Monthly Average ", subtitle=st,x="Months",fill="Average Import")+scale_color_discrete(name = "", 
+  labels = c("Import Auto", "Domestic Auto", "Import Commercial","Domestic Commercial"))
+e<-final_part3%>%group_by(month)%>% summarise(Monthly_auto_avg = mean(auto_total), 
+  Monthly_com_avg = mean(comm_total)) %>% pivot_longer(.,-month) %>% 
+  ggplot(.,aes(x=month,y=value,color=name)) +scale_x_continuous(breaks = seq(0,12, by = 1))+
+  geom_line(size=1)+theme_minimal()+theme(axis.text.x = element_text(angle = 65), 
+  legend.position = c(0.5, 0.92))+ ylim(0,2100)+scale_color_discrete(name = "", 
+  labels = c("Total Auto", "Total Commercial")) + labs(title="", st="", x="Months", y="")
+(f|e)
+```
+The first line plot presents the change of domestic and imported vehicles for both automobiles and commercials, where the second one illustrates the total automobiles and commercials amount in monthly basis. Import is higher than domestic for both automobiles and commercials. Domestic Automobiles amount and domestic commercials amount are close to each other, however there is a significant difference between imported automobiles and imported commercials amount. The total number of automobiles is always higher than the total number of commercials throughout the year, which makes sense since there are a ot more users for automobiles. 
+
+```{r fig.show="hold", out.width="90%"}
+c<-final_part3 %>% filter(year == "2020") %>%
+filter(total_total > 0) %>%  group_by(brand_name) %>% 
+  summarize(average_total =mean(total_total))%>% filter(average_total>100)%>% 
+  ggplot(data = ., aes(y=reorder(brand_name, average_total), x=average_total,  
+  fill=average_total))+ geom_col(color="black", fill="salmon")+ theme_minimal()+
+  theme(axis.text.x = element_text(angle = 65), legend.position = "none")+
+  geom_text(aes(label = format(average_total, digits = 0)), size=3, position = 
+  position_stack(vjust = 0.5))+ labs(title="Monthly Average Total Sales", 
+  subtitle=st, y="Brands", x="2020")+xlim(0,8000)
+d<-final_part3 %>% filter(!(year == "2020")) %>% 
+filter(!(month=="9" |month=="10" |month=="11" |month=="12"))%>%
+filter(total_total > 0) %>%  group_by(brand_name) %>%summarize(average_total = 
+  mean(total_total))  %>% filter(average_total>100)%>% ggplot(data = ., aes(
+  y=reorder(brand_name, average_total), x=average_total,fill=average_total))+ 
+  geom_col(color="black", fill="palegreen2")+ theme_minimal()+theme(axis.text.x = 
+  element_text(angle = 65), legend.position = "none")+geom_text(aes(label = 
+  format(average_total, digits = 0)), size=3,position = position_stack(vjust = 0.5),)+
+  labs(title="",y="Brands", x="2015-2019")+xlim(0,8000)
+(c|d)
+```
+The first bar chart presents the average monthly number of total vehicles belong to different brands, where the second one illustrates the average monthly number of these brands between 2015 and 2019. Since the data includes the first 8 months of 2020, the filter is used to select only these months from the previous years as well. The brands which sell more than 100 vehicles averagely in a month are presented in these plots since there are many brands in the dataset.It can  be said that in general the amount in 2020 is less than the previous years' averages. Also, the number of brands which sell more than 100 vehicles monthy is decreased in 2020. *Renault* was the previous years' top 1 car, whereas in 2020 it changed and *Fiat* has become the top 1 in this list. 
+
+
+
+
