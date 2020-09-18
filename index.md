@@ -7,7 +7,7 @@ Assignments during the term can be find below.<br>
 
 **Assignment 1:**  A report consists of description of myself and some *R related videos and posts* by using Rmarkdown. 
 
-- Report: [html](https://pjournal.github.io/boun01-NazliGul/Assignment-1-RmarkdownFile_.html)<br>
+- R Videos and Posts Review: [html](https://pjournal.github.io/boun01-NazliGul/Assignment-1-RmarkdownFile_.html)<br>
 
 **Assignment 2:** A report consists of data manipulation and visualization by using dpylr and ggplot2 packages for *EXIST July,2020 dataset*.
 
@@ -39,14 +39,15 @@ Assignments during the term can be find below.<br>
 - CRAN: [html](https://cran.r-project.org/web/packages/data.table/index.html)
 - Tutorial: [html](https://pjournal.github.io/boun01g-data-mine-r-s/data.table/datatable.html)
 
-## Exercises
-Exercises during the term can be find below.<br>
+### Exercises
 
-**Exercise 1:** Examples of creating functions in R.<br> 
-[Functions in R](https://pjournal.github.io/boun01-NazliGul/Exercise-1.html)<br>
-**Exercise 2:** <br>
-**Exercise 3:** <br>
-**Exercise 4:** Online tutorial examples for the implementation of join functions in dplyr package.<br> 
-[Join Tutorial Examples](https://pjournal.github.io/boun01-NazliGul/Exercise-3.html)<br>
+**Exercise:** Examples of creating functions in R.
+
+- [Functions in R](https://pjournal.github.io/boun01-NazliGul/Exercise-1.html)<br>
+**Exercise:** <br>
+**Exercise:** <br>
+**Exercise:** Online tutorial examples for the implementation of join functions in dplyr package.
+
+- [Join Tutorial Examples](https://pjournal.github.io/boun01-NazliGul/Exercise-3.html)
 
 
