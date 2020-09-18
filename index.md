@@ -3,8 +3,6 @@
 
 
 ### Assignments
-Assignments during the term can be find below.<br>
-
 **Assignment 1:**  A report consists of description of myself and some *R related videos and posts* by using Rmarkdown. 
 
 - R Videos and Posts Review: [html](https://pjournal.github.io/boun01-NazliGul/Assignment-1-RmarkdownFile_.html)<br>
