@@ -39,15 +39,17 @@ Assignments during the term can be find below.<br>
 - CRAN: [html](https://cran.r-project.org/web/packages/data.table/index.html)
 - Tutorial: [html](https://pjournal.github.io/boun01g-data-mine-r-s/data.table/datatable.html)
 
+### Final Assignment
+
+- Report: [html](https://pjournal.github.io/boun01-NazliGul/Finalcik.html)
+
+### Course Webpage
+
+- Course Link: [IE 48A Summer 2020](https://boun-ie48a.github.io/)
+
 ### Exercises
 
-**Exercise:** Examples of creating functions in R.
-
 - [Functions in R](https://pjournal.github.io/boun01-NazliGul/Exercise-1.html)<br>
-**Exercise:** <br>
-**Exercise:** <br>
-**Exercise:** Online tutorial examples for the implementation of join functions in dplyr package.
-
 - [Join Tutorial Examples](https://pjournal.github.io/boun01-NazliGul/Exercise-3.html)
 
 
