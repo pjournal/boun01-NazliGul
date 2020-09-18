@@ -34,6 +34,11 @@ Assignments during the term can be find below.<br>
 - Models: [html](https://pjournal.github.io/boun01g-data-mine-r-s/Project/Model.html)
 - Presentation: [html](https://pjournal.github.io/boun01g-data-mine-r-s/Project/Presentation.html#1)
 
+**Group Bonus Tutorial:** data.table package tutorial
+
+- CRAN: [html](https://cran.r-project.org/web/packages/data.table/index.html)
+- Tutorial: [html](https://pjournal.github.io/boun01g-data-mine-r-s/data.table/datatable.html)
+
 ## Exercises
 Exercises during the term can be find below.<br>
 
